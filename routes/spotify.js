@@ -11,15 +11,18 @@ const spotifyApi = new SpotifyWebApi({
 
 // TODO: protect the route so that only connected people can access it
 router.get("/test", (req, res, next) => {
-  spotifyApi.setAccessToken(req.user.accessToken); // This is to tell the Spotify API that the API call is linked to the logged in user
-  spotifyApi
-    .getFollowedArtists()
-    .then(data => {
-      res.render("spotify/test", {
-        data: JSON.stringify(data, null, 2)
-      });
-    })
-    .catch(next);
+  spotifyApi.setRefreshToken(req.user.refreshToken);
+  spotifyApi.refreshAccessToken().then(data => {
+    spotifyApi.setAccessToken(data.body.access_token);
+    spotifyApi
+      .getFollowedArtists()
+      .then(data => {
+        res.render("spotify/test", {
+          data: JSON.stringify(data, null, 2)
+        });
+      })
+      .catch(next);
+  });
 });
 
 module.exports = router;

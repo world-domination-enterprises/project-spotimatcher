@@ -24,7 +24,6 @@ passport.use(
           } else {
             User.create({
               spotifyID: profile.id,
-              accessToken,
               refreshToken,
               // TODO: also insert the photoUrl, profileUrl, ...
             }).then(userCreated => {

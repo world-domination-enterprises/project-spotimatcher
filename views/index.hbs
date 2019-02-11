@@ -1,4 +1,9 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>SPOTIMATCHER</h1>
+<p>Find people who love the same music as you!</p>
+
+{{#if failureMessage}}
+<p>You must login with Spotify to use this service.</p>
+{{/if}}
 
 <a href='/auth/spotify'>Login with Spotify</a>
+
