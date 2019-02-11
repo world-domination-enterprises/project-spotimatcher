@@ -62,12 +62,12 @@ router.get("/logout", (req, res) => {
 
 // Spotify Authentication
 
-app.get('/auth/spotify', passport.authenticate('spotify'), function(req, res) {
+router.get('/auth/spotify', passport.authenticate('spotify'), function(req, res) {
   // The request will be redirected to spotify for authentication, so this
   // function will not be called.
 });
 
-app.get(
+router.get(
   '/auth/spotify/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function(req, res) {
@@ -83,7 +83,7 @@ app.get(
 //  user-read-email => email
 
 
-app.get('/login', (req, res, next) => {
+router.get('/login', (req, res, next) => {
   const my_client_id = 'b0564b64166e409680d97cb7fafe9942'
   var scopes = 'user-top-read user-read-email user-read-birthdate user-read-private';
   res.redirect('https://accounts.spotify.com/authorize' +
@@ -94,16 +94,16 @@ app.get('/login', (req, res, next) => {
   });
 
 //  after authentication spotify sends user back to redirect URI; display info: succes or failure message  
-app.get('https://example.com/callback', (req, res, next) => {
+router.get('https://example.com/callback', (req, res, next) => {
   const {code} = req.query
   res.render('auth-succes', {message: true}) //  display success message; buttons: match, profile
 })
 
-app.get('https://example.com/callback?error=access_denied', (req, res, next) => {
+router.get('https://example.com/callback?error=access_denied', (req, res, next) => {
   res.redirect('/login', {message: true}) //  display failure message: 'You must authenticate with spotify account to use this service.' 
 })
 
-app.post('https://accounts.spotify.com/api/token', function(req, res) {
+router.post('https://accounts.spotify.com/api/token', function(req, res) {
   req.body = {
     grant_type: 'authorization_code',
     code: code,
