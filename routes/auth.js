@@ -60,4 +60,20 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+// Spotify Authentication
+
+app.get('/auth/spotify', passport.authenticate('spotify'), function(req, res) {
+  // The request will be redirected to spotify for authentication, so this
+  // function will not be called.
+});
+
+app.get(
+  '/auth/spotify/callback',
+  passport.authenticate('spotify', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  }
+);
+
 module.exports = router;
