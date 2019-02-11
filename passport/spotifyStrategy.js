@@ -8,7 +8,7 @@ passport.use(
     {
       clientID: client_id,
       clientSecret: client_secret,
-      callbackURL: 'http://localhost:8888/auth/spotify/callback'
+      callbackURL: 'https://spotimatcher.herokuapp.com/auth/login/callback'
     },
     function(accessToken, refreshToken, expires_in, profile, done) {
       User.findOrCreate({ spotifyId: profile.id }, function(err, user) {

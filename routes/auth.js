@@ -62,19 +62,18 @@ router.get("/logout", (req, res) => {
 
 // Spotify Authentication
 
-router.get('/auth/spotify', passport.authenticate('spotify'), function(req, res) {
-  // The request will be redirected to spotify for authentication, so this
-  // function will not be called.
-});
+// router.get('/login', passport.authenticate('spotify'), function(req, res) {
+//   // The request will be redirected to spotify for authentication, so this
+//   // function will not be called.
+// });
 
-router.get(
-  '/auth/spotify/callback',
-  passport.authenticate('spotify', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/');
-  }
-);
+// router.get('/auth/spotify/callback',
+//   passport.authenticate('spotify', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   }
+// );
 
 //  Scopes: 
 //  user-top-read => Read access to a user's top artists and tracks.
@@ -94,7 +93,7 @@ router.get('/login', (req, res, next) => {
   });
 
 //  after authentication spotify sends user back to redirect URI; display info: succes or failure message  
-router.get('https://example.com/callback', (req, res, next) => {
+router.get('https://spotimatcher.herokuapp.com/auth/login/callback', (req, res, next) => {
   const {code} = req.query
   res.render('auth-succes', {message: true}) //  display success message; buttons: match, profile
 })
@@ -107,7 +106,7 @@ router.post('https://accounts.spotify.com/api/token', function(req, res) {
   req.body = {
     grant_type: 'authorization_code',
     code: code,
-    redirect_uri: redirect_uri, //  TODO: create URI
+    redirect_uri: 'https://spotimatcher.herokuapp.com/auth/login/callback', //  TODO: create URI
     client_id: 'b0564b64166e409680d97cb7fafe9942',
     client_secret: '773a717943c846a390c132c13b9ae2af' 
   }
