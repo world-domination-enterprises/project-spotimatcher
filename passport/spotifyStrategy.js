@@ -1,19 +1,38 @@
-const passport      = require('passport');
-const SpotifyStrategy = require('passport-spotify').Strategy;
-const User          = require('../models/User');
-const bcrypt        = require('bcrypt');
+const passport = require("passport");
+const SpotifyStrategy = require("passport-spotify").Strategy;
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
 passport.use(
   new SpotifyStrategy(
     {
-      clientID: client_id,
-      clientSecret: client_secret,
-      callbackURL: 'https://spotimatcher.herokuapp.com/auth/login/callback'
+      clientID: process.env.SPOTIFY_CLIENT_ID,
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+      callbackURL: "/auth/spotify/callback"
     },
-    function(accessToken, refreshToken, expires_in, profile, done) {
-      User.findOrCreate({ spotifyId: profile.id }, function(err, user) {
-        return done(err, user);
-      });
+    // The following function is triggered just after the user logged in from Spotify and accepted the conditions
+    (accessToken, refreshToken, expiresIn, profile, done) => {
+      console.log("DEBUG SpotifyStrategy called");
+      console.log("TCL: profile", profile);
+      console.log("TCL: expiresIn", expiresIn);
+
+      User.findOne({ spotifyID: profile.id })
+        .then(user => {
+          // If we have found a user in the database
+          if (user) {
+            return done(null, user); // We log in the user found in the database
+          } else {
+            User.create({
+              spotifyID: profile.id,
+              accessToken,
+              refreshToken,
+              // TODO: also insert the photoUrl, profileUrl, ...
+            }).then(userCreated => {
+              return done(null, userCreated); // We log in the user that was just created
+            });
+          }
+        })
+        .catch(err => done(err));
     }
   )
 );

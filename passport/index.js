@@ -2,7 +2,7 @@ const passport = require('passport');
 
 require('./serializers');
 require('./localStrategy');
-require('passport-spotify');
+require('./spotifyStrategy');
 
 module.exports = (app)  => {
   app.use(passport.initialize());

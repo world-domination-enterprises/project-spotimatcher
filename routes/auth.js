@@ -62,55 +62,28 @@ router.get("/logout", (req, res) => {
 
 // Spotify Authentication
 
-// router.get('/login', passport.authenticate('spotify'), function(req, res) {
-//   // The request will be redirected to spotify for authentication, so this
-//   // function will not be called.
-// });
+router.get('/spotify', passport.authenticate('spotify', {
+  scope: [
+    'user-follow-read', // https://developer.spotify.com/documentation/general/guides/scopes/#user-follow-read
+    'user-top-read', // https://developer.spotify.com/documentation/general/guides/scopes/#user-top-read
+    'user-read-birthdate', // https://developer.spotify.com/documentation/general/guides/scopes/#user-read-birthdate
+    'user-read-private', // https://developer.spotify.com/documentation/general/guides/scopes/#user-read-private
+    'user-read-email', // https://developer.spotify.com/documentation/general/guides/scopes/#user-read-email
+  ]
+}));
 
-// router.get('/auth/spotify/callback',
-//   passport.authenticate('spotify', { failureRedirect: '/login' }),
-//   function(req, res) {
-//     // Successful authentication, redirect home.
-//     res.redirect('/');
-//   }
-// );
+router.get('/spotify/callback',
+  passport.authenticate('spotify', { 
+    failureRedirect: '/login',
+    successRedirect: '/',
+  })
+);
 
 //  Scopes: 
 //  user-top-read => Read access to a user's top artists and tracks.
 //  user-read-birthdate => Read access to the user's birthdate.
 //  user-read-private => reading country and product subscription level
 //  user-read-email => email
-
-
-router.get('/login', (req, res, next) => {
-  const my_client_id = 'b0564b64166e409680d97cb7fafe9942'
-  var scopes = 'user-top-read user-read-email user-read-birthdate user-read-private';
-  res.redirect('https://accounts.spotify.com/authorize' +
-    '?response_type=code' +
-    '&client_id=' + my_client_id +
-    (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-    '&redirect_uri=' + encodeURIComponent(redirect_uri));
-  });
-
-//  after authentication spotify sends user back to redirect URI; display info: succes or failure message  
-router.get('https://spotimatcher.herokuapp.com/auth/login/callback', (req, res, next) => {
-  const {code} = req.query
-  res.render('auth-succes', {message: true}) //  display success message; buttons: match, profile
-})
-
-router.get('https://example.com/callback?error=access_denied', (req, res, next) => {
-  res.redirect('/login', {message: true}) //  display failure message: 'You must authenticate with spotify account to use this service.' 
-})
-
-router.post('https://accounts.spotify.com/api/token', function(req, res) {
-  req.body = {
-    grant_type: 'authorization_code',
-    code: code,
-    redirect_uri: 'https://spotimatcher.herokuapp.com/auth/login/callback', //  TODO: create URI
-    client_id: 'b0564b64166e409680d97cb7fafe9942',
-    client_secret: '773a717943c846a390c132c13b9ae2af' 
-  }
-})  
 
 
 
