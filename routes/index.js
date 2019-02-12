@@ -8,8 +8,9 @@ router.get("/", (req, res, next) => {
 });
 
 //ROUTE going to our PROFILE
+
 router.get("/profile", (req, res, next) => {
-  res.render("profile");
+  res.render("profile", { loggedIn: true });
 });
 
 //ROUTE going to our RESULTS-Page
