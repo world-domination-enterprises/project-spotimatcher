@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{{title}}</title>
+  <title>SpotiMatcher</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
+
 <body>
 
   <nav>
-    <a href="/">Profile</a>
-    <a href="/auth/login">Login</a>
-    <a href="/auth/logout">Logout</a>
+    {{!-- TODO: set variable for logged in --> loggedIn: true --}}
     <a href="/about">About</a>
+    <a href="/profile">Profile</a>
+    {{!-- <a href="/auth/logout">Logout</a>
+    <a href="/auth/login">Login</a> --}}
   </nav>
 
   {{{body}}}
 
   <script src="/javascripts/script.js"></script>
 </body>
+
 </html>
