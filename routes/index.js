@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const countrynames = require('countrynames')
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -14,7 +15,9 @@ router.get("/about", (req, res, next) => {
 //ROUTE going to our PROFILE
 router.get("/profile", (req, res, next) => {
   const user = req.user
-  res.render("profile", { user });
+  res.render("profile", { user,
+    // converts countrycode to full country name
+  countryName: countrynames.getName(req.user.country).toLowerCase()})
 });
 
 //ROUTE going to our RESULTS-Page

@@ -1,16 +1,16 @@
 <h1 class="text-center">Profile</h1>
 {{!-- use user for user data --}}
 {{#if successMessage}}
-<p class="text-center">Success! User profile activated.</p>
+<p class="text-center font-weight-bold">Success! User profile activated.</p>
 {{else}}
-<p class="text-center">Welcome back, {{user.name}}</p>
+<p class="text-center font-weight-bold">Welcome back, {{user.username}}</p>
 {{/if}}
 
 <div class="profile_container w-25 d-flex flex-column mx-auto">
-<img src="{{user.photoUrl}}" alt="" class="profile_photo rounded-circle mx-auto">
+<img src="{{user.photoUrl}}" alt="user-profile-picture" class="profile_photo rounded-circle mt-3 mx-auto">
 <ul class="mx-auto m-2">
 <li>{{user.username}}</li>
-<li>{{user.country}}</li>
+<li>{{countryName}}</li>
 <li>{{user.email}}</li>
 <li>Top Ten Artists</li>
 {{!-- TODO: user top ten artists --}}
