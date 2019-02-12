@@ -1,5 +1,18 @@
 .profile_photo {
-  border-radius: 50%; }
+  height: 200px;
+  width: 200px; }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.btn {
+  background: #1db954;
+  border: none; }
+  .btn:hover {
+    background: #fff;
+    color: #1db954; }
 
 body {
   padding: 50px;
