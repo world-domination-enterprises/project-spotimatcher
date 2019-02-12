@@ -1,3 +1,19 @@
+.profile_photo {
+  height: 200px;
+  width: 200px; }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.btn {
+  background: #1db954;
+  border: none; }
+  .btn:hover {
+    background: #fff;
+    color: #1db954; }
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }

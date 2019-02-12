@@ -1,13 +1,14 @@
-<h1>Profile</h1>
+<h1 class="text-center">Profile</h1>
 {{!-- use user for user data --}}
 {{#if successMessage}}
-<p>Success! User profile activated.</p>
+<p class="text-center">Success! User profile activated.</p>
 {{else}}
-<p>Welcome back, {{user.name}}</p>
+<p class="text-center">Welcome back, {{user.name}}</p>
 {{/if}}
 
-<img src="/public/images/profile-placeholder.png" alt="" class="profile_photo">
-<ul>
+<div class="profile_container w-25 d-flex flex-column mx-auto">
+<img src="/images/profile-placeholder.png" alt="" class="profile_photo rounded-circle mx-auto">
+<ul class="mx-auto">
 {{!-- TODO: insert pic from user profile here --}}
 <li>John Doe</li>
 {{!-- TODO: user name --}}
@@ -20,4 +21,5 @@
 <li>5 last matches:</li>
 {{!-- TODO: add matches here --}}
 
-<a href="/results">Find your matches!</a>
+<button class="btn btn-primary m-3">Find your matches!</button>
+</div>
