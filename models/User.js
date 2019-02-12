@@ -8,7 +8,9 @@ const userSchema = new Schema({
   email: String,
   country: String,
   profileUrl: String,
-  photoUrl: String
+  photoUrl: String,
+  favArtists: [],
+  favGenres: []
 }, {
   timestamps: {
     createdAt: 'created_at',

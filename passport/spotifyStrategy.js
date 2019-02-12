@@ -1,7 +1,14 @@
 const passport = require("passport");
 const SpotifyStrategy = require("passport-spotify").Strategy;
+const SpotifyWebApi = require("spotify-web-api-node");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+
+const spotifyApi = new SpotifyWebApi({
+  clientId: process.env.SPOTIFY_CLIENT_ID,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET
+  // redirectUri: 'http://www.example.com/callback'
+});
 
 passport.use(
   new SpotifyStrategy(
@@ -15,7 +22,6 @@ passport.use(
       console.log("DEBUG SpotifyStrategy called");
       console.log("TCL: profile", profile);
       console.log("TCL: expiresIn", expiresIn);
-
       User.findOne({ spotifyID: profile.id })
         .then(user => {
           // If we have found a user in the database
@@ -31,14 +37,39 @@ passport.use(
               profileUrl: profile.profileUrl,
               photoUrl: profile.photos[0]
               // TODO: also insert the photoUrl, profileUrl, ...
-
-            }).then(userCreated => {
-							console.log('TCL: userCreated', userCreated)
-              return done(null, userCreated); // We log in the user that was just created
-            });
-          }
+            })
+              .then(userCreated => {
+                console.log('TCL: userCreated', userCreated)
+                spotifyApi.setRefreshToken(userCreated.refreshToken);
+                spotifyApi.refreshAccessToken()
+                  .then(data => {
+                    spotifyApi.setAccessToken(data.body.access_token);
+                    spotifyApi
+                    .getMyTopArtists({limit: 50, offset: 0, time_range: 'long_term'})
+                      .then(gotArtists => {
+                        console.log('TCL: gotArtists', gotArtists.body)
+                        let favArtists = []
+                        let favGenres = []
+                        for (i of gotArtists.body.items) {
+                          favArtists.push(i.name)
+                          favGenres.push(...i.genres)
+                        }
+                        userCreated.favArtists = favArtists
+                        userCreated.favGenres = favGenres
+                        console.log('TCL: userCreated', userCreated)
+                        console.log('TCL: favArtists', favArtists)
+												console.log('TCL: userCreated.favArtists', userCreated.favArtists)
+                        console.log('TCL: favGenres', favGenres)
+                        User.findOneAndUpdate({ _id: userCreated._id }, {$set:{ favArtists: favArtists, favGenres: favGenres}}, {new: true} )
+                          .then(artistUpdated => {
+                            return done(null, userCreated); // We log in the user that was just created
+                          })
+                      })   
+                  })
+                })
+            }
         })
         .catch(err => done(err));
-    }
-  )
+      }
+    )
 );
