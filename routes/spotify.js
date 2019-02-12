@@ -25,6 +25,7 @@ router.get("/test", (req, res, next) => {
   });
 });
 
+// TODO: protect the route so that only connected people can access it
 router.get('/favArtists', (req, res, next) => {
   spotifyApi.setRefreshToken(req.user.refreshToken);
   spotifyApi.refreshAccessToken().then(data => {

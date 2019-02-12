@@ -23,10 +23,17 @@ passport.use(
             return done(null, user); // We log in the user found in the database
           } else {
             User.create({
+              // username: profile.displayName,
               spotifyID: profile.id,
               refreshToken,
+              // email: profile.emails[0].value,
+              country: profile.country,
+              profileUrl: profile.profileUrl,
+              photoUrl: profile.photos[0]
               // TODO: also insert the photoUrl, profileUrl, ...
+
             }).then(userCreated => {
+							console.log('TCL: userCreated', userCreated)
               return done(null, userCreated); // We log in the user that was just created
             });
           }

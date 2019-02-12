@@ -76,7 +76,7 @@ router.get('/spotify/callback',
   passport.authenticate('spotify', { 
     failureRedirect: '/',
     failureMessage: true,
-    successRedirect: '/profile',
+    successRedirect: '../views/profile',
     successMessage: true
   })
 );
