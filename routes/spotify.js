@@ -25,4 +25,19 @@ router.get("/test", (req, res, next) => {
   });
 });
 
+router.get('/favArtists', (req, res, next) => {
+  spotifyApi.setRefreshToken(req.user.refreshToken);
+  spotifyApi.refreshAccessToken().then(data => {
+    spotifyApi.setAccessToken(data.body.access_token);
+    spotifyApi
+      .getMyTopArtists({limit: 50, offset: 0, time_range: 'long_term'})
+      .then(data => {
+        res.render('spotify/favArtists', {
+          data: JSON.stringify(data, null, 2)
+        });
+      })
+      .catch(next);
+  });
+});
+
 module.exports = router;
