@@ -3,21 +3,22 @@
 {{#if successMessage}}
 <p>Success! User profile activated.</p>
 {{else}}
-<p>Welcome back, {{user.name}}</p>
+<p>Welcome back, {{user.username}}</p>
 {{/if}}
 
-<img src="/public/images/profile-placeholder.png" alt="" class="profile_photo">
+<img src="{{user.photoUrl}}" alt="" class="profile_photo">
 <ul>
-{{!-- TODO: insert pic from user profile here --}}
-<li>John Doe</li>
-{{!-- TODO: user name --}}
-<li>Germany 🇩🇪</li>
-{{!-- TODO: user country --}}
-<li>john.doe@gmail.com</li>
-{{!-- TODO: user email --}}
+<li>{{user.username}}</li>
+<li>{{user.country}}</li>
+<li>{{user.email}}</li>
 <li>Top Ten Artists</li>
-{{!-- TODO: user name --}}
+{{!-- TODO: user top ten artists --}}
+<li>Top Ten Genres</li>
+{{!-- TODO: user top ten artists --}}
 <li>5 last matches:</li>
 {{!-- TODO: add matches here --}}
 
+<a href="{{user.profileURL}}" target="_blank">Go to user's Spotify profile!</a> 
+{{!-- link not working; fix this --}}
+<br>
 <a href="/results">Find your matches!</a>

@@ -23,10 +23,10 @@ passport.use(
             return done(null, user); // We log in the user found in the database
           } else {
             User.create({
-              // username: profile.displayName,
+              username: profile.displayName,
               spotifyID: profile.id,
               refreshToken,
-              // email: profile.emails[0].value,
+              email: profile.emails[0].value,
               country: profile.country,
               profileUrl: profile.profileUrl,
               photoUrl: profile.photos[0]

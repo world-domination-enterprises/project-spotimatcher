@@ -13,7 +13,8 @@ router.get("/about", (req, res, next) => {
 
 //ROUTE going to our PROFILE
 router.get("/profile", (req, res, next) => {
-  res.render("profile");
+  const user = req.user
+  res.render("profile", { user });
 });
 
 //ROUTE going to our RESULTS-Page
