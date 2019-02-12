@@ -2,19 +2,22 @@
 {{!-- use user for user data --}}
 {{#if successMessage}}
 <p>Success! User profile activated.</p>
+{{else}}
+<p>Welcome back, {{user.name}}</p>
 {{/if}}
 
-<img src="" alt="">
+<img src="/public/images/profile-placeholder.png" alt="" class="profile_photo">
+<ul>
 {{!-- TODO: insert pic from user profile here --}}
-<p>name</p>
+<li>John Doe</li>
 {{!-- TODO: user name --}}
-<p>user country</p>
+<li>Germany 🇩🇪</li>
 {{!-- TODO: user country --}}
-<p>user contact</p>
+<li>john.doe@gmail.com</li>
 {{!-- TODO: user email --}}
-<p>Top Ten Artists</p>
+<li>Top Ten Artists</li>
 {{!-- TODO: user name --}}
-<p>5 last matches</p>
+<li>5 last matches:</li>
 {{!-- TODO: add matches here --}}
 
 <a href="/results">Find your matches!</a>
