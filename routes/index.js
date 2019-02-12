@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Match = require("../models/Match");
 const countrynames = require('countrynames')
 
 /* GET home page */
@@ -15,14 +16,42 @@ router.get("/about", (req, res, next) => {
 //ROUTE going to our PROFILE
 router.get("/profile", (req, res, next) => {
   const user = req.user
-  res.render("profile", { user,
+  
+  //  sort the user's favGenres by frequency (high to low)
+  let counts = {}
+  let genresToSort = user.favGenres
+  genresToSort.forEach(x => { counts[x] = (counts[x] || 0)+1; })
+  let genresSorted = Object.keys(counts).sort((a, b) => {return counts[b] - counts[a]})
+
+  //  create users Top Ten Artists/Genres
+  const topTenArtists = []
+  const topTenGenres = []
+  for (let i = 0; i < 10; i++) {
+    topTenArtists.push(user.favArtists[i])
+    topTenGenres.push(genresSorted[i])
+  }
+
+  res.render("profile", { 
+    user,
     // converts countrycode to full country name
-  countryName: countrynames.getName(req.user.country).toLowerCase()})
+    countryName: countrynames.getName(req.user.country).toLowerCase(),
+    topTenArtists,
+    topTenGenres
+  })
 });
 
 //ROUTE going to our RESULTS-Page
 //TODO: implement matching-function here
 router.get("/results", (req, res, next) => {
+
+  //  match favArtist and favGenre arrays against eachother by using the following funtion:
+  // function matches(arr){
+  //   var counts = {};
+  //   arr.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+  //   let matchedKeys = Object.keys(counts).filter(key => counts[key] > 1)
+  //   return matchedKeys
+  //   }
+
   res.render("results");
 });
 
