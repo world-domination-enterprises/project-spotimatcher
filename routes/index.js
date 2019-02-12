@@ -6,7 +6,7 @@ const User = require("../models/User");
 router.get("/", (req, res, next) => {
   res.render("index");
 });
-
+//ROUTE about page
 router.get("/about", (req, res, next) => {
   res.render("about");
 });
