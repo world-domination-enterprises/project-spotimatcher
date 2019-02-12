@@ -7,10 +7,13 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-//ROUTE going to our PROFILE
+router.get("/about", (req, res, next) => {
+  res.render("about");
+});
 
+//ROUTE going to our PROFILE
 router.get("/profile", (req, res, next) => {
-  res.render("profile", { loggedIn: true });
+  res.render("profile");
 });
 
 //ROUTE going to our RESULTS-Page
