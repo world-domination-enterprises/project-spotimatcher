@@ -1,15 +1,14 @@
 @import 'index';
 @import 'profile';
 @import 'animations';
-
+html {
+  height: 100%;
+}
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: #00B7FF;
-}
-.content-container {
-  //insert background color or background image here
 }
 .btn {
   background: #1db954;
