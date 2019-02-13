@@ -1,9 +1,12 @@
-<h1>SPOTIMATCHER</h1>
-<p>Find people who love the same music as you!</p>
+<div class="main-page-container d-flex flex-column align-self-center">
+<h1 class="main-h1 text-center mt-5">
+  <span class="">S</span><span class="">P</span><span class="">O</span><span class="">T</span><span class="">I</span><span class="">M</span><span class="">A</span><span class="">T</span><span class="">C</span><span class="">H</span><span class="">E</span><span class="">R</span>
+</h1>
+<p class="sub-p text-center">Find people who love the same music as you!</p>
 
 {{#if failureMessage}}
 <p>You must login with Spotify to use this service.</p>
 {{/if}}
 
-<a href='/auth/spotify'>Login with Spotify</a>
-
+<a href='/auth/spotify' class="btn btn-primary m-3 mx-auto">Login with Spotify</a>
+</div>

@@ -1,4 +1,16 @@
-.profile_photo {
+.main-h1 span {
+  display: inline-block;
+  font-size: 50px;
+  transform: scale(4);
+  opacity: 0; }
+
+.sub-p {
+  animation: fadeIn 1s ease-in-out;
+  animation-delay: 1.9s;
+  animation-fill-mode: forwards;
+  opacity: 0; }
+
+.profile-photo {
   height: 200px;
   width: 200px; }
 
@@ -7,18 +19,91 @@ ul {
   margin: 0;
   padding: 0; }
 
+.main-h1 span:nth-child(1) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(2) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(3) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 0.4s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(4) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(5) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(6) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(7) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(8) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 0.9s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(9) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 1s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(10) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 1.1s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(11) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 1.2s;
+  animation-fill-mode: forwards; }
+
+.main-h1 span:nth-child(12) {
+  animation: shrinkFadeEffect 1s ease-in-out;
+  animation-delay: 1.3s;
+  animation-fill-mode: forwards; }
+
+@keyframes shrinkFadeEffect {
+  0% {
+    transform: scale(4);
+    opacity: 0; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }
+
 .btn {
   background: #1db954;
   border: none; }
   .btn:hover {
     background: #fff;
     color: #1db954; }
-
-body {
-  padding: 30px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
-a {
-  color: #00B7FF; }
 
 /*# sourceMappingURL=style.css.map */

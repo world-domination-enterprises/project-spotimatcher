@@ -1,10 +1,22 @@
+@import 'index';
 @import 'profile';
+@import 'animations';
 
 body {
-  padding: 30px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
+}
+.content-container {
+  //insert background color or background image here
+}
+.btn {
+  background: #1db954;
+  border: none;
+
+  &:hover {
+    background: #fff;
+    color: #1db954;
+  }
 }

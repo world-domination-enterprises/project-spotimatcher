@@ -7,7 +7,7 @@
 {{/if}}
 
 <div class="profile_container w-25 d-flex flex-column mx-auto">
-<img src="{{user.photoUrl}}" alt="user-profile-picture" class="profile_photo rounded-circle mt-3 mx-auto">
+<img src="{{user.photoUrl}}" alt="user-profile-picture" class="profile-photo rounded-circle mt-3 mx-auto">
 <ul class="mx-auto m-2">
 <li>{{user.username}}</li>
 <li>{{countryName}}</li>
@@ -22,5 +22,5 @@
 <a href="{{user.profileURL}}" target="_blank" class="mx-auto">Go to user's Spotify profile!</a> 
 {{!-- link not working; fix this --}}
 <br>
-<button class="btn btn-primary m-3 mx-auto">Find your matches!</button>
+<a href="/results" class="btn btn-primary m-3 mx-auto">Find your matches!</a>
 </div>
