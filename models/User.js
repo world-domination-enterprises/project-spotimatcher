@@ -19,5 +19,12 @@ const userSchema = new Schema({
   }
 });
 
+// Now this is what you can do with a document: myUser.firstLetter
+userSchema.virtual('firstLetter').get(function() {
+  return this.username.substr(0,1)
+})
+
+
+
 const User = mongoose.model('User', userSchema);
 module.exports = User;

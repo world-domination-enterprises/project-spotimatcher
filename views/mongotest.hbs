@@ -1,7 +1,7 @@
 <h1>Testing mongoDB queries</h1>
 
 <ul>
-{{#each pairedUsers}}
-<li>{{this}}</li>
+{{#each matches}}
+<li>{{this._user1.username}} and {{this._user2.username}} have a match score of: {{this.score}}</li>
 {{/each}}
 </ul>
