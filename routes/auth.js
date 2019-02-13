@@ -65,7 +65,8 @@ router.get(
       "user-read-birthdate", // https://developer.spotify.com/documentation/general/guides/scopes/#user-read-birthdate
       "user-read-private", // https://developer.spotify.com/documentation/general/guides/scopes/#user-read-private
       "user-read-email" // https://developer.spotify.com/documentation/general/guides/scopes/#user-read-email
-    ]
+    ],
+    showDialog: true
   })
 );
 
@@ -85,10 +86,18 @@ router.get(
 //  user-read-private => reading country and product subscription level
 //  user-read-email => email
 
+// router.get("/logout", (req, res) => {
+//   req.logout();
+//   res.redirect("/");
+// });
+
+
 //TODO: find a way to log user out with spotify
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
-});
+
+router.get('/logout', function(req, res){
+  req.session.destroy(function (err) {
+  res.redirect('/'); //Inside a callback… bulletproof!
+  });
+  });
 
 module.exports = router;

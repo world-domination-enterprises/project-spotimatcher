@@ -14,10 +14,12 @@
 
   <nav>
     {{!-- TODO: set variable for logged in --> loggedIn: true --}}
-    <a href="/about">About</a>
+    {{#if user}}
     <a href="/profile">Profile</a>
-    {{!-- <a href="/auth/logout">Logout</a>
-    <a href="/auth/login">Login</a> --}}
+    <a href="/auth/logout">Logout</a>
+    {{/if}}
+    <a href="/about">About</a>
+    {{!-- <a href="/auth/login">Login</a> --}}
   </nav>
 
   {{{body}}}

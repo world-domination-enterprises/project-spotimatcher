@@ -66,4 +66,17 @@ router.get("/profile/:id", (req, res, next) => {
     .catch(err => console.log("Error getting Userdata--", err));
 });
 
+router.get("/mongotest", (req, res, next) => {
+  const allUserIds = []
+  User.find()
+    .then(users => {
+			console.log('TCL: users', users)
+      for (user of users) {
+        allUserIds.push(user._id)
+				console.log('TCL: allUserIds', allUserIds)
+      } 
+      res.render("mongotest", {allUserIds})
+    })
+})
+
 module.exports = router;

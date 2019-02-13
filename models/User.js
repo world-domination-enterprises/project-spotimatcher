@@ -10,7 +10,8 @@ const userSchema = new Schema({
   profileUrl: String,
   photoUrl: String,
   favArtists: [],
-  favGenres: []
+  favGenres: [],
+  matches: []
 }, {
   timestamps: {
     createdAt: 'created_at',
