@@ -70,13 +70,30 @@ router.get("/mongotest", (req, res, next) => {
   const allUserIds = []
   User.find()
     .then(users => {
-			console.log('TCL: users', users)
+      console.log('TCL: users', users)
+      
       for (user of users) {
         allUserIds.push(user._id)
-				console.log('TCL: allUserIds', allUserIds)
-      } 
-      res.render("mongotest", {allUserIds})
+      }
+      console.log('TCL: allUserIds', allUserIds)
+
+      const pairedUsers = pairwise(allUserIds)
+			console.log('TCL: pairedUsers', pairedUsers)
+      res.render("mongotest", {pairedUsers})
     })
-})
+  })
+
+function pairwise(list) {
+
+  var pairs = new Array((list.length * (list.length - 1)) / 2),
+      pos = 0;
+
+  for (var i = 0; i < list.length; i++) {
+      for (var j = i + 1; j < list.length; j++) {
+          pairs[pos++] = [list[i], list[j]];
+      }
+  }
+  return pairs;
+}
 
 module.exports = router;
