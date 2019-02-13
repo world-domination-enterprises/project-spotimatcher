@@ -1,0 +1,21 @@
+//SPINNER
+
+// INDEX PAGE TEXT ANIMATION
+$seconds: 0.2s;
+
+  @for $i from 1 to 13 {
+  .main-h1 span:nth-child(#{$i}) {
+    animation: shrinkFadeEffect 1s ease-in-out;
+    animation-delay: $seconds;
+    animation-fill-mode: forwards;
+    $seconds: $seconds + 0.1;
+  }
+  }
+@keyframes shrinkFadeEffect {
+  0% {transform: scale(4); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}

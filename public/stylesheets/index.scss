@@ -1,0 +1,12 @@
+.main-h1 span {
+  display: inline-block;
+  font-size: 50px;
+  transform: scale(4);
+  opacity: 0;
+}
+.sub-p {
+  animation: fadeIn 1s ease-in-out;
+  animation-delay: 1.9s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
