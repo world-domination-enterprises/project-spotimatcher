@@ -54,12 +54,6 @@ const bcryptSalt = 10;
 //   });
 // });
 
-//TODO: find a way to log user out with spotify
-router.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
-});
-
 // Spotify Authentication
 
 router.get(
@@ -90,5 +84,11 @@ router.get(
 //  user-read-birthdate => Read access to the user's birthdate.
 //  user-read-private => reading country and product subscription level
 //  user-read-email => email
+
+//TODO: find a way to log user out with spotify
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = router;
