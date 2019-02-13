@@ -71,11 +71,12 @@ router.get("/mongotest", (req, res, next) => {
   User.find()
     .then(users => {
       
-      for (user of users) {
+      for (let user of users) {
         allUserIds.push(user._id)
       }
 
       const pairedUsers = pairwise(allUserIds)
+<<<<<<< HEAD
       
       var myList = user.favGenres
 
@@ -84,6 +85,22 @@ router.get("/mongotest", (req, res, next) => {
       });
 
       res.render("mongotest", {pairedUsers})
+=======
+			console.log('TCL: pairedUsers', pairedUsers)
+      
+      let promises = []
+      for (let i = 0; i < pairedUsers.length; i++) {
+        promises.push(
+        Match.create({ 
+          user1_id: pairedUsers[i][0],
+          user2_id: pairedUsers[i][1]
+          })
+        )}
+        Promise.all(promises)
+        .then(resolved => {
+          res.render("mongotest", {pairedUsers})
+        })
+>>>>>>> a7ec72383813994e0edc992bb60634aa519dcfe7
     })
   })
 
