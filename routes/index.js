@@ -70,15 +70,19 @@ router.get("/mongotest", (req, res, next) => {
   const allUserIds = []
   User.find()
     .then(users => {
-      console.log('TCL: users', users)
       
       for (user of users) {
         allUserIds.push(user._id)
       }
-      console.log('TCL: allUserIds', allUserIds)
 
       const pairedUsers = pairwise(allUserIds)
-			console.log('TCL: pairedUsers', pairedUsers)
+      
+      var myList = user.favGenres
+
+      User.find({favGenres: {$in: myList}}, function(err, user){
+        console.log(user)
+      });
+
       res.render("mongotest", {pairedUsers})
     })
   })
