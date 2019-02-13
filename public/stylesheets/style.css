@@ -1,6 +1,6 @@
 .main-h1 span {
   display: inline-block;
-  font-size: 50px;
+  font-size: 58px;
   transform: scale(4);
   opacity: 0; }
 
@@ -93,8 +93,11 @@ ul {
   100% {
     opacity: 1; } }
 
+html {
+  height: 100%; }
+
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
