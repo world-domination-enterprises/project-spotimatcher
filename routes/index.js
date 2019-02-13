@@ -72,14 +72,26 @@ router.get("/mongotest", (req, res, next) => {
     .then(users => {
       console.log('TCL: users', users)
       
-      for (user of users) {
+      for (let user of users) {
         allUserIds.push(user._id)
       }
       console.log('TCL: allUserIds', allUserIds)
 
       const pairedUsers = pairwise(allUserIds)
 			console.log('TCL: pairedUsers', pairedUsers)
-      res.render("mongotest", {pairedUsers})
+      
+      let promises = []
+      for (let i = 0; i < pairedUsers.length; i++) {
+        promises.push(
+        Match.create({ 
+          user1_id: pairedUsers[i][0],
+          user2_id: pairedUsers[i][1]
+          })
+        )}
+        Promise.all(promises)
+        .then(resolved => {
+          res.render("mongotest", {pairedUsers})
+        })
     })
   })
 
