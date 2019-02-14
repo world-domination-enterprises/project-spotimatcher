@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
+const User = require("../models/User");
 
 const matchSchema = new Schema({
   _user1: {type: Schema.Types.ObjectId, ref: 'User'},
@@ -104,15 +105,19 @@ matchSchema.statics.updateOrCreate = function(user1, user2) {
         matchingArtists: Match.findMatchingArtists(user1, user2),
         matchingGenres: Match.findMatchingGenres(user1, user2)
       });
-
       // score = matchData.score
       // artistMatches = matchData.artistMatches
       // match.score = score
       // match.artistMatches = artistMatches
     }
     return match.save();
-  });
-}
+    }).then(match => {
+      let promises = []
+      promises.push(User.findByIdAndUpdate(user1._id, {$push : { matches: match._id } }, { new: true} ), 
+      User.findByIdAndUpdate(user2._id, {$push : { matches: match._id } }, { new: true} ))
+      return Promise.all(promises)
+    })
+  }
 
 const Match = mongoose.model('Match', matchSchema);
 module.exports = Match;
