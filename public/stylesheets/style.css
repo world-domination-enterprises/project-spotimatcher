@@ -7076,6 +7076,11 @@ ul {
   font-size: 28px;
   font-weight: 300; }
 
+@media only screen and (max-width: 768px) {
+  .profile-page {
+    order: -1;
+    flex-direction: flex-start; } }
+
 .main-h1 span:nth-child(1) {
   animation: shrinkFadeEffect 1s ease-in-out;
   animation-delay: 0.2s;

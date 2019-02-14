@@ -33,3 +33,8 @@ ul {
   font-size: 28px;
   font-weight: 300;
 }
+@media only screen and (max-width: 768px) {
+  .profile-page {
+    order: -1;
+  }
+}
