@@ -44,13 +44,12 @@ router.get(
 //   res.redirect("/");
 // });
 
-
 //TODO: find a way to log user out with spotify
 
-router.get('/logout', function(req, res){
-  req.session.destroy(function (err) {
-  res.redirect('/'); //Inside a callback… bulletproof!
+router.get("/logout", function(req, res) {
+  req.session.destroy(function(err) {
+    res.redirect("/"); //Inside a callback… bulletproof!
   });
-  });
+});
 
 module.exports = router;
