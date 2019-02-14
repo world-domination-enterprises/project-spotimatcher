@@ -7043,6 +7043,11 @@ a.text-dark:hover, a.text-dark:focus {
   .main-h1 span {
     font-size: 38px; } }
 
+li a {
+  -webkit-transition: all 0.8s;
+  transition: all 0.8s;
+  color: white; }
+
 .profile-photo {
   max-height: 80%;
   max-width: 80%; }
