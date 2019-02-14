@@ -7021,7 +7021,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 .index-container {
-  min-height: 95%; }
+  min-height: 90%; }
 
 .main-h1 span {
   display: inline-block;
@@ -7042,6 +7042,11 @@ a.text-dark:hover, a.text-dark:focus {
 @media only screen and (max-width: 358px) {
   .main-h1 span {
     font-size: 38px; } }
+
+li a {
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  color: white; }
 
 .top-artists {
   animation: fadeIn 1.5s;
@@ -7199,6 +7204,8 @@ html {
   height: 100%; }
 
 body {
+  background: #535353;
+  color: #fff;
   font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100%; }
 
