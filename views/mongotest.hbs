@@ -1,7 +1,29 @@
 <h1>Testing mongoDB queries</h1>
 
-<ul>
+
 {{#each matches}}
-<li>{{this._user1.username}} and {{this._user2.username}} have a match score of: {{this.score}}</li>
+<div>
+  <ul>
+<li><strong>{{this._user1.username}}</strong> and <strong>{{this._user2.username}}</strong> have a match score of: <strong>{{this.score}}</strong></li>
+  </ul>
+<br>
+{{#unless this.matchingArtists.length}}
+<p>They have no artists in common.</p>
+{{/unless}}
+<p>They have the following artists in common:</p>
+<ul>
+{{#each this.matchingArtists}}
+<li><strong>{{this}}</strong></li>
 {{/each}}
 </ul>
+<br>
+<p>They have the following <strong>{{this.matchingGenres.length}}</strong> genres in common:</p>
+<ul>
+{{#each this.matchingGenres}}
+<li><strong>{{this}}</strong></li>
+{{/each}}
+</ul>
+</div>
+<hr>
+<br>
+{{/each}}

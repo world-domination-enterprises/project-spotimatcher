@@ -27,7 +27,7 @@ router.get("/profile", (req, res, next) => {
     return counts[b] - counts[a];
   });
 
-  //  create users Top Ten Artists/Genres
+  //  create users' Top Ten Artists/Genres
   const topTenArtists = [];
   const topTenGenres = [];
   for (let i = 0; i < 10; i++) {
@@ -48,12 +48,12 @@ router.get("/profile", (req, res, next) => {
 //TODO: implement matching-function here
 router.get("/results", (req, res, next) => {
   //  match favArtist and favGenre arrays against eachother by using the following function:
-  // function matches(arr){
-  //   var counts = {};
-  //   arr.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
-  //   let matchedKeys = Object.keys(counts).filter(key => counts[key] > 1)
-  //   return matchedKeys
-  //   }
+  //  function matches(arr){
+  //    var counts = {};
+  //    arr.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+  //    let matchedKeys = Object.keys(counts).filter(key => counts[key] > 1)
+  //    return matchedKeys
+  //    }
 
   res.render("results");
 });
@@ -69,6 +69,7 @@ router.get("/profile/:id", (req, res, next) => {
     .catch(err => console.log("Error getting Userdata--", err));
 });
 
+//  TEST-route for matching algorithm *** !!REFACTORED AND IMPROVED VERSION!! ***
 router.get("/mongotest", (req, res, next) => {
   User.find()
     .then(users => {
