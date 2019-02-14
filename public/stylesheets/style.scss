@@ -1,7 +1,6 @@
 $primary: #1db954;
 
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
-
 @import 'index';
 @import 'profile';
 @import 'animations';
@@ -10,6 +9,7 @@ html {
 }
 body {
   font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 a {
   color: #00B7FF;
