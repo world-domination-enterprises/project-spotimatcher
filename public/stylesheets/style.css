@@ -7021,7 +7021,7 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 .index-container {
-  min-height: 90%; }
+  height: 90%; }
 
 .main-h1 span {
   display: inline-block;
@@ -7078,8 +7078,7 @@ ul {
     font-size: 20px; }
 
 .top-p {
-  font-size: 28px;
-  font-weight: 300; }
+  font-size: 28px; }
 
 .modal {
   display: none;
@@ -7206,8 +7205,13 @@ html {
 body {
   background: #535353;
   color: #fff;
+<<<<<<< HEAD
+  height: 100%;
+  font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif; }
+=======
   font: 14px "Quicksand", "Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100%; }
+>>>>>>> 079a32ce812dafef08bb2049148b213e71d123eb
 
 a {
   color: #00b7ff; }
@@ -7215,7 +7219,7 @@ a {
 .btn {
   border: none; }
   .btn:hover {
-    background: #fff;
+    background: #535353;
     color: #1db954; }
 
 #aboutContainer {
