@@ -18,11 +18,15 @@ router.get("/profile", (req, res, next) => {
   const user = req.user;
 
   //  sort the user's favGenres by frequency (high to low)
-  let counts = {};
+  // In the end, we could have: counts = { 'pop': 4, 'electro': 8, 'rap': 2 }
+  let counts = {}; 
+
   let genresToSort = user.favGenres;
-  genresToSort.forEach(x => {
-    counts[x] = (counts[x] || 0) + 1;
+  genresToSort.forEach(genre => {
+    counts[genre] = (counts[genre] || 0) + 1;
   });
+
+  // In the end, we could have: genresSorted = ['electro','pop','rap']
   let genresSorted = Object.keys(counts).sort((a, b) => {
     return counts[b] - counts[a];
   });
@@ -30,7 +34,7 @@ router.get("/profile", (req, res, next) => {
   //  create users Top Ten Artists/Genres
   const topTenArtists = [];
   const topTenGenres = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < Math.min(10, genresSorted.length); i++) {
     topTenArtists.push(user.favArtists[i]);
     topTenGenres.push(genresSorted[i]);
   }
