@@ -58,16 +58,34 @@ router.get("/profile", isConnected, (req, res, next) => {
 
 //ROUTE going to our RESULTS-Page
 //TODO: implement matching-function here
+//  match favArtist and favGenre arrays against eachother by using the following function:
+// function matches(arr){
+//   var counts = {};
+//   arr.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+//   let matchedKeys = Object.keys(counts).filter(key => counts[key] > 1)
+//   return matchedKeys
+//   }
 router.get("/results", isConnected, (req, res, next) => {
-  //  match favArtist and favGenre arrays against eachother by using the following function:
-  // function matches(arr){
-  //   var counts = {};
-  //   arr.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
-  //   let matchedKeys = Object.keys(counts).filter(key => counts[key] > 1)
-  //   return matchedKeys
-  //   }
-
-  res.render("results");
+  const curId = req.user._id;
+  Match.find({
+    $or: [{ _user1: curId }, { _user2: curId }]
+  })
+    .sort({ score: -1 })
+    .then(matches => {
+      let bestMatches = [];
+      console.log("this is matches", matches);
+      for (let i = 0; i < 3; i++) {
+        if (matches[i]._user1.toString() == curId.toString()) {
+          bestMatches.push(matches[i]._user2);
+        } else {
+          bestMatches.push(matches[i]._user1);
+        }
+      }
+      console.log("Ids of the bestmatches", bestMatches);
+      res.render("results", {
+        bestMatches
+      });
+    });
 });
 
 //ROUTE for a users PROFILE-page

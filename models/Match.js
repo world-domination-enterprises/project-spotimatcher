@@ -1,24 +1,28 @@
-const mongoose = require('mongoose');
-const Schema   = mongoose.Schema;
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const matchSchema = new Schema({
-  _user1: {type: Schema.Types.ObjectId, ref: 'User'},
-  _user2: {type: Schema.Types.ObjectId, ref: 'User'},
-  score: Number
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+const matchSchema = new Schema(
+  {
+    _user1: { type: Schema.Types.ObjectId, ref: "User" },
+    _user2: { type: Schema.Types.ObjectId, ref: "User" },
+    score: Number
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }
   }
-});
+);
 
 matchSchema.statics.calculateScore = function(user1, user2) {
   return Math.floor(Math.random() * 100);
-}
+};
 
 // Now, this is what you can do with your model: Match.updateOrCreateMatch()
+
 matchSchema.statics.updateOrCreate = function(user1, user2) {
-  let Match = this.model('Match')
+  let Match = this.model("Match");
   return Match.findOne({
     $or: [
       { _user1: user1._id, _user2: user2._id },
@@ -39,7 +43,7 @@ matchSchema.statics.updateOrCreate = function(user1, user2) {
     }
     return match.save();
   });
-}
+};
 
-const Match = mongoose.model('Match', matchSchema);
+const Match = mongoose.model("Match", matchSchema);
 module.exports = Match;
