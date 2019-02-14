@@ -30,17 +30,23 @@ router.get("/profile", (req, res, next) => {
   //  create users Top Ten Artists/Genres
   const topTenArtists = [];
   const topTenGenres = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i <= 10; i++) {
     topTenArtists.push(user.favArtists[i]);
     topTenGenres.push(genresSorted[i]);
   }
 
+  // display top 10 artists and top 10 genres
+      const topTenGen = topTenGenres.map((item) => {
+        return item.charAt(0).toUpperCase() + item.slice(1)
+      })
+        const countryLowercase = countrynames.getName(user.country).toLowerCase()
+        const userCountry = countryLowercase.charAt(0).toUpperCase() + countryLowercase.slice(1)
   res.render("profile", {
     user,
     // converts countrycode to full country name
-    countryName: countrynames.getName(req.user.country).toLowerCase(),
+    countryName: userCountry,
     topTenArtists,
-    topTenGenres
+    topTenGen,
   });
 });
 
@@ -63,8 +69,51 @@ router.get("/profile/:id", (req, res, next) => {
   const id = req.params.id;
   User.findById(id)
     .then(user => {
-      console.log("User--", user);
-      res.render("profile", { user });
+
+
+        //  sort the user's favGenres by frequency (high to low)
+  let counts = {};
+  let genresToSort = user.favGenres;
+  genresToSort.forEach(x => {
+    counts[x] = (counts[x] || 0) + 1;
+  });
+  let genresSorted = Object.keys(counts).sort((a, b) => {
+    return counts[b] - counts[a];
+  });
+
+  //  create users Top Ten Artists/Genres
+  const topTenArtists = [];
+  const topTenGenres = [];
+  for (let i = 0; i <= 10; i++) {
+    topTenArtists.push(user.favArtists[i]);
+    topTenGenres.push(genresSorted[i]);
+  }
+
+  // display top 10 genres with uppercase first letter
+      const topTenGen = topTenGenres.map((item) => {
+        return item.charAt(0).toUpperCase() + item.slice(1)
+      })
+      const countryLowercase = countrynames.getName(user.country).toLowerCase()
+      const userCountry = countryLowercase.charAt(0).toUpperCase() + countryLowercase.slice(1)
+  res.render("profile", {
+    user,
+    // converts countrycode to full country name
+    countryName: userCountry,
+    topTenArtists,
+    topTenGen,
+  });
+
+
+      // const userCountry = user.country
+      
+      // const topTenGen = user.favGenres.map((item) => {
+      //   return item.charAt(0).toUpperCase() + item.slice(1)
+      // })
+      // console.log("User--", user);
+      // res.render("profile", { user,
+      //   topTenGen,
+      //   countryName: countrynames.getName(userCountry).toLowerCase(),
+      //   });
     })
     .catch(err => console.log("Error getting Userdata--", err));
 });
