@@ -1,5 +1,11 @@
 <h1 class="text-center">These are your matches:</h1>
 
+{{#each matches}}
+<ul>
+<li>{{this._id}}</li>
+</ul>
+{{/each}}
+
 {{!-- Three cards with info of the matches --}}
 <div class="row w-100 mx-auto justify-content-center">
   <div class='col-md-3 col-sm-7 col-10 d-flex flex-column m-3'>
