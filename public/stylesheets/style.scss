@@ -10,8 +10,8 @@ html {
 body {
   background: #535353;
   color: #fff;
-  font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100%;
+  font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
   color: #00B7FF;
@@ -20,7 +20,7 @@ a {
   border: none;
 
   &:hover {
-    background: #fff;
+    background: #535353;
     color: #1db954;
   }
 }
