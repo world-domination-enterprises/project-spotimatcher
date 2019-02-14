@@ -7043,6 +7043,24 @@ a.text-dark:hover, a.text-dark:focus {
   .main-h1 span {
     font-size: 38px; } }
 
+.top-artists {
+  animation: fadeIn 1.5s;
+  animation-fill-mode: forwards;
+  animation-delay: .3s;
+  opacity: 0; }
+
+.profile-page {
+  animation: fadeIn 1.5s;
+  animation-fill-mode: forwards;
+  animation-delay: .6s;
+  opacity: 0; }
+
+.top-genres {
+  animation: fadeIn 1.5s;
+  animation-fill-mode: forwards;
+  animation-delay: .9s;
+  opacity: 0; }
+
 .profile-photo {
   max-height: 80%;
   max-width: 80%; }
@@ -7051,6 +7069,12 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0; }
+  ul li {
+    font-size: 20px; }
+
+.top-p {
+  font-size: 28px;
+  font-weight: 300; }
 
 .main-h1 span:nth-child(1) {
   animation: shrinkFadeEffect 1s ease-in-out;
