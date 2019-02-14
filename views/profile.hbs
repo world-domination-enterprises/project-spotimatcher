@@ -5,15 +5,21 @@
 {{else}}
 <p class="text-center font-weight-bold">Welcome back, {{user.username}}</p>
 {{/if}}
-
-<div class="profile_container w-25 d-flex flex-column mx-auto">
+<div class="row w-100 mx-auto justify-content-center testa">
+<div class="top-artists col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center">
+<ul class="mx-auto m-2">
+<li class="top-p"><b>Top ten artists:</b></li><br>
+{{#each topTenArtists}}
+<li>{{this}}</li>
+{{/each}}
+</ul>
+</div>
+<div class="profile-page col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center">
 <img src="{{user.photoUrl}}" alt="user-profile-picture" class="profile-photo rounded-circle mt-3 mx-auto">
 <ul class="mx-auto m-2">
 <li>{{user.username}}</li>
 <li>{{countryName}}</li>
 <li>{{user.email}}</li>
-<li><b>Top Ten Artists:</b> {{topTenArtists}}</li>
-<li><b>Top Ten Genres:</b> {{topTenGen}}</li>
 <li>5 last matches:</li>
 {{!-- TODO: add matches here --}}
 </ul>
@@ -21,4 +27,13 @@
 {{!-- link not working; fix this --}}
 <br>
 <a href="/results" class="btn btn-primary m-3 mx-auto">Find your matches!</a>
+</div>
+<div class="top-genres col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center">
+<ul class="mx-auto m-2">
+<li class="top-p"><b>Top ten genres:</b></li><br>
+{{#each topTenGen}}
+<li>{{this}}</li>
+{{/each}}
+</ul>
+</div>
 </div>
