@@ -1,20 +1,21 @@
 $primary: #1db954;
 
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
-@import 'index';
-@import 'profile';
-@import 'animations';
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "index";
+@import "profile";
+@import "animations";
+
 html {
   height: 100%;
 }
 body {
   background: #535353;
   color: #fff;
+  font: 14px "Quicksand", "Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100%;
-  font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif;
 }
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 .btn {
   border: none;
