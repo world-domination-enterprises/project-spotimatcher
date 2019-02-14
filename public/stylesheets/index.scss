@@ -1,3 +1,6 @@
+.index-container {
+  min-height: 95%;
+}
 .main-h1 span {
   display: inline-block;
   font-size: 58px;
@@ -9,4 +12,22 @@
   animation-delay: 1.9s;
   animation-fill-mode: forwards;
   opacity: 0;
+}
+
+@media only screen and (max-width: 480px) {
+  .main-h1 span {
+    font-size: 43px;
+  }
+}
+@media only screen and (max-width: 358px) {
+  .main-h1 span {
+    font-size: 38px;
+  }
+}
+
+//links
+li a {
+  -webkit-transition: all 0.7s;
+  transition: all 0.7s;
+  color: white;
 }

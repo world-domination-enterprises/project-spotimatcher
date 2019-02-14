@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const Match = require("../models/Match");
 const countrynames = require("countrynames");
+const isConnected = require("../middlewares");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -14,15 +15,19 @@ router.get("/about", (req, res, next) => {
 });
 
 //ROUTE going to our PROFILE
-router.get("/profile", (req, res, next) => {
+router.get("/profile", isConnected, (req, res, next) => {
   const user = req.user;
 
   //  sort the user's favGenres by frequency (high to low)
+  // In the end, we could have: counts = { 'pop': 4, 'electro': 8, 'rap': 2 }
   let counts = {};
+
   let genresToSort = user.favGenres;
-  genresToSort.forEach(x => {
-    counts[x] = (counts[x] || 0) + 1;
+  genresToSort.forEach(genre => {
+    counts[genre] = (counts[genre] || 0) + 1;
   });
+
+  // In the end, we could have: genresSorted = ['electro','pop','rap']
   let genresSorted = Object.keys(counts).sort((a, b) => {
     return counts[b] - counts[a];
   });
@@ -30,23 +35,30 @@ router.get("/profile", (req, res, next) => {
   //  create users' Top Ten Artists/Genres
   const topTenArtists = [];
   const topTenGenres = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < Math.min(11, genresSorted.length); i++) {
     topTenArtists.push(user.favArtists[i]);
     topTenGenres.push(genresSorted[i]);
   }
 
+  // display top 10 artists and top 10 genres
+  const topTenGen = topTenGenres.map(item => {
+    return item.charAt(0).toUpperCase() + item.slice(1);
+  });
+  const countryLowercase = countrynames.getName(user.country).toLowerCase();
+  const userCountry =
+    countryLowercase.charAt(0).toUpperCase() + countryLowercase.slice(1);
   res.render("profile", {
     user,
     // converts countrycode to full country name
-    countryName: countrynames.getName(req.user.country).toLowerCase(),
+    countryName: userCountry,
     topTenArtists,
-    topTenGenres
+    topTenGen
   });
 });
 
 //ROUTE going to our RESULTS-Page
 //TODO: implement matching-function here
-router.get("/results", (req, res, next) => {
+router.get("/results", isConnected, (req, res, next) => {
   //  match favArtist and favGenre arrays against eachother by using the following function:
   //  function matches(arr){
   //    var counts = {};
@@ -59,12 +71,53 @@ router.get("/results", (req, res, next) => {
 });
 
 //ROUTE for a users PROFILE-page
-router.get("/profile/:id", (req, res, next) => {
+router.get("/profile/:id", isConnected, (req, res, next) => {
   const id = req.params.id;
   User.findById(id)
     .then(user => {
-      console.log("User--", user);
-      res.render("profile", { user });
+      //  sort the user's favGenres by frequency (high to low)
+      let counts = {};
+      let genresToSort = user.favGenres;
+      genresToSort.forEach(x => {
+        counts[x] = (counts[x] || 0) + 1;
+      });
+      let genresSorted = Object.keys(counts).sort((a, b) => {
+        return counts[b] - counts[a];
+      });
+
+      //  create users Top Ten Artists/Genres
+      const topTenArtists = [];
+      const topTenGenres = [];
+      for (let i = 0; i <= 10; i++) {
+        topTenArtists.push(user.favArtists[i]);
+        topTenGenres.push(genresSorted[i]);
+      }
+
+      // display top 10 genres with uppercase first letter
+      const topTenGen = topTenGenres.map(item => {
+        return item.charAt(0).toUpperCase() + item.slice(1);
+      });
+      const countryLowercase = countrynames.getName(user.country).toLowerCase();
+      const userCountry =
+        countryLowercase.charAt(0).toUpperCase() + countryLowercase.slice(1);
+      res.render("profile", {
+        user,
+        // converts countrycode to full country name
+        countryName: userCountry,
+        topTenArtists,
+        topTenGen
+      });
+
+      // const userCountry = user.country
+
+      // const topTenGen = user.favGenres.map((item) => {
+      //   return item.charAt(0).toUpperCase() + item.slice(1)
+      // })
+      // console.log("User--", user);
+      // res.render("profile", { user,
+      //   topTenGen,
+      //   countryName: countrynames.getName(userCountry).toLowerCase(),
+      //   });
     })
     .catch(err => console.log("Error getting Userdata--", err));
 });
@@ -76,7 +129,7 @@ router.get("/mongotest", (req, res, next) => {
       let promises = [];
       // Loop on each possible couple (user1,user2) where user1 < user2
       for (let i1 = 0; i1 < users.length; i1++) {
-        for (let i2 = i1+1; i2 < users.length; i2++) {
+        for (let i2 = i1 + 1; i2 < users.length; i2++) {
           promises.push(Match.updateOrCreate(users[i1], users[i2]));
         }
       }
