@@ -1,10 +1,9 @@
 <h1 class="text-center">Profile</h1>
 {{!-- use user for user data --}}
-{{#if successMessage}}
-<p class="text-center font-weight-bold">Success! User profile activated.</p>
-{{else}}
+{{#if user}}
 <p class="text-center font-weight-bold">Welcome back, {{user.username}}</p>
 {{/if}}
+
 {{!-- using class card for transparent background of cards --}}
 <div class="row w-100 mx-auto justify-content-center testa ">
   <div class="card top-artists col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
@@ -24,7 +23,7 @@
       <li>5 last matches:</li>
       {{!-- TODO: add matches here --}}
     </ul>
-    <a href="{{user.profileURL}}" target="_blank" class="mx-auto">Go to user's Spotify profile!</a>
+    <a href="{{user.profileURL}}" target="_blank" class="mx-auto">Go to {{#if user}}your{{else}}user's{{/if}} Spotify profile!</a>
     {{!-- link not working; fix this --}}
     <br>
     <a href="/results" class="btn btn-primary m-3 mx-auto button1">Find your matches!</a>
