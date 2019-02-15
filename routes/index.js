@@ -85,21 +85,24 @@ router.get("/results", isConnected, (req, res, next) => {
       })
         .sort({ score: -1 })
         .then(matches => {
+          let bestMatchesUserIds = [];
           let bestMatches = [];
           console.log("this is matches", matches);
           for (let i = 0; i < 3; i++) {
             if (matches[i]._user1.toString() == curId.toString()) {
-              bestMatches.push(matches[i]._user2);
+              bestMatchesUserIds.push(matches[i]._user2);
+              bestMatches.push(matches[i]);
             } else {
-              bestMatches.push(matches[i]._user1);
+              bestMatchesUserIds.push(matches[i]._user1);
+              bestMatches.push(matches[i]);
             }
           }
 
           User.find({
-            _id: { $in: bestMatches }
+            _id: { $in: bestMatchesUserIds }
           }).then(top3matchedUsers => {
             console.log("TCL: top3matchingUsers", top3matchedUsers);
-            res.render("results", { matches, top3matchedUsers });
+            res.render("results", { bestMatches, top3matchedUsers });
           });
         });
     });

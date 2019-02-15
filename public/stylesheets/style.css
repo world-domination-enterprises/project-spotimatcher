@@ -7094,6 +7094,10 @@ ul {
   opacity: 0;
   z-index: -1; }
 
+.p-text {
+  color: white;
+  font-family: "Quicksand", sans-serif; }
+
 @media only screen and (max-width: 768px) {
   .profile-page {
     order: -1; } }
@@ -7211,9 +7215,7 @@ ul {
 h1,
 h2,
 h3 {
-  font-family: "Oswald", sans-serif;
-  font-weight: 300;
-  color: #333; }
+  font-weight: 300; }
 
 p {
   line-height: 28px;

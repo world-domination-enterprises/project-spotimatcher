@@ -1,29 +1,29 @@
-<h1 class="text-center mt-3">These are your matches:</h1>
+<h1 class="text-center mt-3">These are your bestMatches:</h1>
 
-{{!-- Three cards with info of the matches --}}
+{{!-- Three cards with info of the bestMatches --}}
 <div class="row w-100 mx-auto justify-content-center">
 
   <div class='card col-md-3 col-sm-8 col-11 d-flex flex-column m-3 p-3 first'>
     <h2 class="text-center username">{{top3matchedUsers.[0].username}}</h2>
     <img src={{top3matchedUsers.[0].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto"  width="200px" height="200px">
-    <h3 class="text-center m-3">Score: {{matches.[0].score}}</h3>
-    <h3 class="text-center h3-matching-art"><strong>{{matches.[0].matchingArtists.length}}</strong> Matching artists:</h3>
-    {{#unless matches.[0].matchingArtists}}
+    <h3 class="text-center m-3">Score: {{bestMatches.[0].score}}</h3>
+    <h3 class="text-center h3-matching-art"><strong>{{bestMatches.[0].matchingArtists.length}}</strong> Matching artists:</h3>
+    {{#unless bestMatches.[0].matchingArtists}}
     <p class="no-match text-center p-0 m-0">❌No matching artists</p>
     {{/unless}}
-    {{#each matches.[0].matchingArtists}}
+    {{#each bestMatches.[0].matchingArtists}}
     <ul>
      <li class="text-center">✔️{{this}}</li>
     </ul>
     {{/each}}
     <br>  
-    <h3 class="text-center h3-matching-gen mt-2"><strong>{{matches.[0].matchingGenres.length}}</strong> Matching genres:</h3>
+    <h3 class="text-center h3-matching-gen mt-2"><strong>{{bestMatches.[0].matchingGenres.length}}</strong> Matching genres:</h3>
  <a class="text-center" data-toggle="collapse" href="#collapseExample1" role="button" aria-expanded="false" aria-controls="collapseExample">
     See matching genres 
   </a>
   
-    {{#each matches.[0].matchingGenres}}
+    {{#each bestMatches.[0].matchingGenres}}
     <ul class="collapse" id="collapseExample1">
       <li>{{this}}</li>
     </ul>
@@ -39,23 +39,23 @@
     <h2 class="text-center">{{top3matchedUsers.[1].username}}</h2>
     <img src={{top3matchedUsers.[1].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto"  width="200px" height="200px">
-     <h3 class="text-center h3-score m-3">Score: {{matches.[1].score}}</h3>
-    <h3 class="text-center h3-matching-art"><strong>{{matches.[1].matchingArtists.length}}</strong> Matching artists:</h3>
-    {{#unless matches.[1].matchingArtists}}
+     <h3 class="text-center h3-score m-3">Score: {{bestMatches.[1].score}}</h3>
+    <h3 class="text-center h3-matching-art"><strong>{{bestMatches.[1].matchingArtists.length}}</strong> Matching artists:</h3>
+    {{#unless bestMatches.[1].matchingArtists}}
       <p class="no-match text-center p-0 m-0">❌No matching artists</p>
     {{/unless}}
-   {{#each matches.[1].matchingArtists}}
+   {{#each bestMatches.[1].matchingArtists}}
     <ul>
      <li class="text-center">✔️{{this}}</li>
     </ul>
     {{/each}}
     <br>  
-    <h3 class="text-center h3-matching-gen mt-2"><strong>{{matches.[1].matchingGenres.length}}</strong> Matching genres:</h3>
+    <h3 class="text-center h3-matching-gen mt-2"><strong>{{bestMatches.[1].matchingGenres.length}}</strong> Matching genres:</h3>
      <a class="text-center" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
     See matching genres 
   </a>
   
-    {{#each matches.[1].matchingGenres}}
+    {{#each bestMatches.[1].matchingGenres}}
     <ul class="collapse" id="collapseExample2">
       <li>{{this}}</li>
     </ul>
@@ -67,24 +67,24 @@
     <h2 class="text-center">{{top3matchedUsers.[2].username}}</h2>
     <img src={{top3matchedUsers.[2].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto" width="200px" height="200px">
-     <h3 class="text-center h3-score m-3">Score: {{matches.[2].score}}</h3>
-    <h3 class="text-center h3-matching-art"><strong>{{matches.[2].matchingArtists.length}}</strong> Matching artists:</h3>
-    {{#unless matches.[2].matchingArtists}}
+     <h3 class="text-center h3-score m-3">Score: {{bestMatches.[2].score}}</h3>
+    <h3 class="text-center h3-matching-art"><strong>{{bestMatches.[2].matchingArtists.length}}</strong> Matching artists:</h3>
+    {{#unless bestMatches.[2].matchingArtists}}
       <p class="no-match text-center p-0 m-0">❌No matching artists</p>
     {{/unless}}
-    {{#each matches.[2].matchingArtists}}
+    {{#each bestMatches.[2].matchingArtists}}
     <ul>
      <li class="text-center">✔️{{this}}</li>
     </ul>
     {{/each}}
     <br>  
-    <h3 class="text-center h3-matching-gen mt-2"><strong>{{matches.[2].matchingGenres.length}}</strong> Matching genres:</h3>
+    <h3 class="text-center h3-matching-gen mt-2"><strong>{{bestMatches.[2].matchingGenres.length}}</strong> Matching genres:</h3>
 
       <a class="text-center" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="false" aria-controls="collapseExample3">
     See matching genres 
   </a>
   
-    {{#each matches.[2].matchingGenres}}
+    {{#each bestMatches.[2].matchingGenres}}
     <ul class="collapse" id="collapseExample3">
       <li>{{this}}</li>
     </ul>
