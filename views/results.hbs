@@ -9,14 +9,17 @@
     <img src={{top3matchedUsers.[0].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto">
     <h3 class="text-center test">Score: {{matches.[0].score}}</h3>
-    <h3 class="text-center test">Matched artists:</h3>
+    <h3 class="text-center test"><strong>{{matches.[0].matchingArtists.length}}</strong> Matching artists:</h3>
+    {{#unless matches.[0].matchingArtists}}
+    <p>No matching artists.</p>
+    {{/unless}}
     {{#each matches.[0].matchingArtists}}
       <ul>
         <li>{{this}}</li>
       </ul>
     {{/each}}
     <br>  
-    <h3 class="text-center test">Matched genres:</h3>
+    <h3 class="text-center test"><strong>{{matches.[0].matchingGenres.length}}</strong> Matching genres:</h3>
     {{#each matches.[0].matchingGenres}}
       <ul>
         <li>{{this}}</li>
@@ -30,14 +33,17 @@
     <img src={{top3matchedUsers.[1].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto">
     <h3 class="text-center test">Score: {{matches.[1].score}}</h3>
-    <h3 class="text-center test">Matched artists:</h3>
+    <h3 class="text-center test"><strong>{{matches.[1].matchingArtists.length}}</strong> Matching artists:</h3>
+    {{#unless matches.[1].matchingArtists}}
+    <p>No matching artists.</p>
+    {{/unless}}
     {{#each matches.[1].matchingArtists}}
       <ul>
         <li>{{this}}</li>
       </ul>
     {{/each}}
     <br>  
-    <h3 class="text-center test">Matched genres:</h3>
+    <h3 class="text-center test"><strong>{{matches.[1].matchingGenres.length}}</strong> Matching genres:</h3>
     {{#each matches.[1].matchingGenres}}
       <ul>
         <li>{{this}}</li>
@@ -51,14 +57,17 @@
     <img src={{top3matchedUsers.[2].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto">
     <h3 class="text-center test">Score: {{matches.[2].score}}</h3>
-    <h3 class="text-center test">Matched artists:</h3>
+    <h3 class="text-center test"><strong>{{matches.[2].matchingArtists.length}}</strong> Matching artists:</h3>
+    {{#unless matches.[2].matchingArtists}}
+    <p>No matching artists.</p>
+    {{/unless}}
     {{#each matches.[2].matchingArtists}}
       <ul>
         <li>{{this}}</li>
       </ul>
     {{/each}}
     <br>  
-    <h3 class="text-center test">Matched genres:</h3>
+    <h3 class="text-center test"><strong>{{matches.[2].matchingGenres.length}}</strong> Matching genres:</h3>
     {{#each matches.[2].matchingGenres}}
       <ul>
         <li>{{this}}</li>

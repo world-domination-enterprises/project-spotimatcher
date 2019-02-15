@@ -75,7 +75,7 @@ matchSchema.statics.findMatchingGenres = function(user1, user2) {
 matchSchema.statics.calculateScore = function(user1, user2) {
   let matchingArtists = Match.findMatchingArtists(user1, user2);
   let matchingGenres = Match.findMatchingGenres(user1, user2);
-  const score = matchingArtists.length * 3 + matchingGenres.length;
+  const score = matchingArtists.length * 10 + matchingGenres.length;
   return score;
 };
 
@@ -105,30 +105,41 @@ matchSchema.statics.updateOrCreate = function(user1, user2) {
           score: Match.calculateScore(user1, user2),
           matchingArtists: Match.findMatchingArtists(user1, user2),
           matchingGenres: Match.findMatchingGenres(user1, user2)
-        });
-        // score = matchData.score
-        // artistMatches = matchData.artistMatches
-        // match.score = score
-        // match.artistMatches = artistMatches
+        })
+        return match.save()
+        .then(matchSaved => {
+          let promises = [];
+          promises.push(
+            User.findByIdAndUpdate(
+              user1._id,
+              { $push: { matches: match._id } },
+              { new: true }
+            ),
+            User.findByIdAndUpdate(
+              user2._id,
+              { $push: { matches: match._id } },
+              { new: true }
+            )
+          )
+          return Promise.all(promises);
+        })
       }
-      return match.save();
     })
-    .then(match => {
-      let promises = [];
-      promises.push(
-        User.findByIdAndUpdate(
-          user1._id,
-          { $push: { matches: match._id } },
-          { new: true }
-        ),
-        User.findByIdAndUpdate(
-          user2._id,
-          { $push: { matches: match._id } },
-          { new: true }
-        )
-      );
-      return Promise.all(promises);
-    });
+    // .then(match => {
+    //   let promises = [];
+    //   promises.push(
+    //     User.findByIdAndUpdate(
+    //       user1._id,
+    //       { $push: { matches: match._id } },
+    //       { new: true }
+    //     ),
+    //     User.findByIdAndUpdate(
+    //       user2._id,
+    //       { $push: { matches: match._id } },
+    //       { new: true }
+    //     )
+    //   );
+    // });
 };
 
 const Match = mongoose.model("Match", matchSchema);
