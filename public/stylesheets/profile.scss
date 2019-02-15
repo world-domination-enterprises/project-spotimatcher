@@ -1,24 +1,28 @@
-.top-artists {
+.top-artists, .first {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .3s;
   opacity: 0;
 }
-.profile-page {
+.profile-page, .second {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .6s;
   opacity: 0;
 }
-.top-genres {
+.top-genres, .third {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .9s;
   opacity: 0;
 }
 .profile-photo {
-  max-height: 80%;
-  max-width: 80%;
+  background: url('../images/profile-placeholder.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-height: 200px;
+  max-width: 200px;
 }
 ul {
   list-style: none;

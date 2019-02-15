@@ -1,10 +1,9 @@
-<h1 class="text-center">Profile</h1>
+<h1 class="text-center mt-3">Profile</h1>
 {{!-- use user for user data --}}
-{{#if successMessage}}
-<p class="text-center font-weight-bold">Success! User profile activated.</p>
-{{else}}
+{{#if user}}
 <p class="text-center font-weight-bold">Welcome back, {{user.username}}</p>
 {{/if}}
+
 {{!-- using class card for transparent background of cards --}}
 <div class="row w-100 mx-auto justify-content-center testa ">
   <div class="card top-artists col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
@@ -24,10 +23,14 @@
       <li>5 last matches:</li>
       {{!-- TODO: add matches here --}}
     </ul>
-    <a href="{{user.profileURL}}" target="_blank" class="mx-auto">Go to user's Spotify profile!</a>
+    <a href={{user.profileUrl}} target="_blank" class="mx-auto">Go to {{#if user}}your{{else}}user's{{/if}} Spotify profile!</a>
     {{!-- link not working; fix this --}}
     <br>
+    {{#if user.matches}}
+    <a href="/results" class="btn btn-primary m-3 mx-auto button1">Update your matches!</a>
+    {{else}}
     <a href="/results" class="btn btn-primary m-3 mx-auto button1">Find your matches!</a>
+    {{/if}}
   </div>
   <div class="card top-genres col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
     <ul class="mx-auto m-2">
@@ -39,7 +42,7 @@
   </div>
 </div>
 <div class="modal d-flex justify-content-center flex-column mx-auto col-12 text-center">
-  <div class="spinner">
+  <div class="spinner mb-4 mt-4 p-0">
     <div class="double-bounce1"></div>
     <div class="double-bounce2"></div>
   </div>
