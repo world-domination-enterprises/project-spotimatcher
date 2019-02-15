@@ -7,7 +7,7 @@ const isConnected = require("../middlewares");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index");
+  res.render("index", { show: true });
 });
 //ROUTE about page
 router.get("/about", (req, res, next) => {
@@ -66,51 +66,50 @@ router.get("/profile", isConnected, (req, res, next) => {
 //   return matchedKeys
 //   }
 router.get("/results", isConnected, (req, res, next) => {
-
-  User.find().then(users => {
-    let promises = [];
-    // Loop on each possible couple (user1,user2) where user1 < user2
-    for (let i1 = 0; i1 < users.length; i1++) {
-      for (let i2 = i1 + 1; i2 < users.length; i2++) {
-        promises.push(Match.updateOrCreate(users[i1], users[i2]));
-      }
-    }
-    return Promise.all(promises);
-  })
-  .then(() => {
-    return Match.find()
-      .populate("_user1", "username")
-      .populate("_user2", "username");
-  })
-  .then(matches => {
-    console.log("TCL: matches", matches);
-
-  const curId = req.user._id;
-  Match.find({
-    $or: [{ _user1: curId }, { _user2: curId }]
-  })
-    .sort({ score: -1 })
-    .then(matches => {
-      let bestMatches = [];
-      console.log("this is matches", matches);
-      for (let i = 0; i < 2; i++) {
-        if (matches[i]._user1.toString() == curId.toString()) {
-          bestMatches.push(matches[i]._user2);
-        } else {
-          bestMatches.push(matches[i]._user1);
+  User.find()
+    .then(users => {
+      let promises = [];
+      // Loop on each possible couple (user1,user2) where user1 < user2
+      for (let i1 = 0; i1 < users.length; i1++) {
+        for (let i2 = i1 + 1; i2 < users.length; i2++) {
+          promises.push(Match.updateOrCreate(users[i1], users[i2]));
         }
       }
+      return Promise.all(promises);
+    })
+    .then(() => {
+      return Match.find()
+        .populate("_user1", "username")
+        .populate("_user2", "username");
+    })
+    .then(matches => {
+      console.log("TCL: matches", matches);
 
-      User.find({
-        '_id': { $in : bestMatches } 
+      const curId = req.user._id;
+      Match.find({
+        $or: [{ _user1: curId }, { _user2: curId }]
       })
-      .then(top3matchedUsers => {
-				console.log('TCL: top3matchingUsers', top3matchedUsers)
-        res.render("results", { matches, top3matchedUsers });
-      })
+        .sort({ score: -1 })
+        .then(matches => {
+          let bestMatches = [];
+          console.log("this is matches", matches);
+          for (let i = 0; i < 2; i++) {
+            if (matches[i]._user1.toString() == curId.toString()) {
+              bestMatches.push(matches[i]._user2);
+            } else {
+              bestMatches.push(matches[i]._user1);
+            }
+          }
+
+          User.find({
+            _id: { $in: bestMatches }
+          }).then(top3matchedUsers => {
+            console.log("TCL: top3matchingUsers", top3matchedUsers);
+            res.render("results", { matches, top3matchedUsers });
+          });
+        });
     });
 });
-})
 
 //ROUTE for a users PROFILE-page
 router.get("/profile/:id", isConnected, (req, res, next) => {

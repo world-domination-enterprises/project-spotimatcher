@@ -25,3 +25,8 @@ a {
     color: #1db954;
   }
 }
+//card Background with transparency and rounded border
+.card {
+  background-color: rgba(185, 185, 185, 0.4);
+  border-radius: 30px;
+}
