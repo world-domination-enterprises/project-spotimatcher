@@ -7205,13 +7205,8 @@ html {
 body {
   background: #535353;
   color: #fff;
-<<<<<<< HEAD
-  height: 100%;
-  font: 14px 'Quicksand',"Lucida Grande", Helvetica, Arial, sans-serif; }
-=======
   font: 14px "Quicksand", "Lucida Grande", Helvetica, Arial, sans-serif;
   height: 100%; }
->>>>>>> 079a32ce812dafef08bb2049148b213e71d123eb
 
 a {
   color: #00b7ff; }
@@ -7221,8 +7216,5 @@ a {
   .btn:hover {
     background: #535353;
     color: #1db954; }
-
-#aboutContainer {
-  background-color: #535353; }
 
 /*# sourceMappingURL=style.css.map */
