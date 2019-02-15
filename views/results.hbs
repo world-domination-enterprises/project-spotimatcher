@@ -11,7 +11,7 @@
     <h3 class="text-center m-3">Score: {{matches.[0].score}}</h3>
     <h3 class="text-center h3-matching-art"><strong>{{matches.[0].matchingArtists.length}}</strong> Matching artists:</h3>
     {{#unless matches.[0].matchingArtists}}
-    <p>❌No matching artists.</p>
+    <p class="text-center">❌No matching artists.</p>
     {{/unless}}
     {{#each matches.[0].matchingArtists}}
     <ul>
@@ -44,7 +44,7 @@
      <h3 class="text-center h3-score m-3">Score: {{matches.[1].score}}</h3>
     <h3 class="text-center h3-matching-art"><strong>{{matches.[1].matchingArtists.length}}</strong> Matching artists:</h3>
     {{#unless matches.[1].matchingArtists}}
-      <p>❌No matching artists.</p>
+      <p class="text-center">❌No matching artists.</p>
     {{/unless}}
    {{#each matches.[1].matchingArtists}}
     <ul>
@@ -74,7 +74,7 @@
      <h3 class="text-center h3-score m-3">Score: {{matches.[2].score}}</h3>
     <h3 class="text-center h3-matching-art"><strong>{{matches.[2].matchingArtists.length}}</strong> Matching artists:</h3>
     {{#unless matches.[2].matchingArtists}}
-      <p>❌No matching artists.</p>
+      <p class="text-center">❌No matching artists.</p>
     {{/unless}}
     {{#each matches.[2].matchingArtists}}
     <ul>

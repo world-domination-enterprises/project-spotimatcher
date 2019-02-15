@@ -7048,6 +7048,9 @@ li a {
   transition: all 0.7s;
   color: white; }
 
+navbar-brand {
+  font-size: 50px; }
+
 .top-artists, .first {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
