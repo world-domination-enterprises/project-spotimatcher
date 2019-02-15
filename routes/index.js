@@ -93,7 +93,7 @@ router.get("/results", isConnected, (req, res, next) => {
         .then(matches => {
           let bestMatches = [];
           console.log("this is matches", matches);
-          for (let i = 0; i < 2; i++) {
+          for (let i = 0; i < 3; i++) {
             if (matches[i]._user1.toString() == curId.toString()) {
               bestMatches.push(matches[i]._user2);
             } else {

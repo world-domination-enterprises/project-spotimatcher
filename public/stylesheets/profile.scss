@@ -1,16 +1,16 @@
-.top-artists {
+.top-artists, .first {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .3s;
   opacity: 0;
 }
-.profile-page {
+.profile-page, .second {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .6s;
   opacity: 0;
 }
-.top-genres {
+.top-genres, .third {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .9s;
@@ -23,9 +23,6 @@
   background-repeat: no-repeat;
   max-height: 200px;
   max-width: 200px;
-}
-.username-h2 {
-  content: "Unknown user";
 }
 ul {
   list-style: none;

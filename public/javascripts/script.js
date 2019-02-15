@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const testa = document.querySelector('.testa'),
-  modal = document.querySelector('.modal')
+  modal = document.querySelector('.modal'),
   btn = document.querySelector('.button1')
 
   btn.addEventListener('click',() => {

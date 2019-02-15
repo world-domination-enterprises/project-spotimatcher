@@ -7048,19 +7048,19 @@ li a {
   transition: all 0.7s;
   color: white; }
 
-.top-artists {
+.top-artists, .first {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .3s;
   opacity: 0; }
 
-.profile-page {
+.profile-page, .second {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .6s;
   opacity: 0; }
 
-.top-genres {
+.top-genres, .third {
   animation: fadeIn 1.5s;
   animation-fill-mode: forwards;
   animation-delay: .9s;
@@ -7073,9 +7073,6 @@ li a {
   background-repeat: no-repeat;
   max-height: 200px;
   max-width: 200px; }
-
-.username-h2 {
-  content: "Unknown user"; }
 
 ul {
   list-style: none;
@@ -7206,6 +7203,9 @@ ul {
   100% {
     opacity: 1; } }
 
+.h3-matching-gen, .h3-matching-art, .top-p {
+  font-size: 20px; }
+
 html {
   height: 100%; }
 
@@ -7216,7 +7216,11 @@ body {
   height: 100%; }
 
 a {
-  color: #00b7ff; }
+  color: #fff; }
+
+a:hover {
+  color: #fff;
+  text-decoration: underline; }
 
 .btn {
   border: none; }
