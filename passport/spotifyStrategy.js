@@ -15,7 +15,8 @@ passport.use(
     {
       clientID: process.env.SPOTIFY_CLIENT_ID,
       clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-      callbackURL: "/auth/spotify/callback"
+      callbackURL: process.env.SPOTIFY_CALLBACK_URL
+      // callbackURL: "/auth/spotify/callback"
     },
     // The following function is triggered just after the user logged in from Spotify and accepted the conditions
     (accessToken, refreshToken, expiresIn, profile, done) => {

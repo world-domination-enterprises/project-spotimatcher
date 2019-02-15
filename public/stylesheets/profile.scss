@@ -41,6 +41,10 @@ ul {
   opacity: 0;
   z-index: -1;
 }
+.p-text {
+  color: white;
+  font-family: "Quicksand", sans-serif;
+}
 @media only screen and (max-width: 768px) {
   .profile-page {
     order: -1;
