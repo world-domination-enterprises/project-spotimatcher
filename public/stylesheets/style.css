@@ -7067,8 +7067,15 @@ li a {
   opacity: 0; }
 
 .profile-photo {
-  max-height: 80%;
-  max-width: 80%; }
+  background: url("../images/profile-placeholder.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-height: 200px;
+  max-width: 200px; }
+
+.username-h2 {
+  content: "Unknown user"; }
 
 ul {
   list-style: none;

@@ -5,9 +5,9 @@
 <div class="row w-100 mx-auto justify-content-center">
 
   <div class='col-md-3 col-sm-7 col-10 d-flex flex-column m-3'>
-    <h2 class="text-center">{{top3matchedUsers.[0].username}}</h2>
+    <h2 class="text-center username-h2">{{top3matchedUsers.[0].username}}</h2>
     <img src={{top3matchedUsers.[0].photoUrl}} alt="match-profile-picture"
-      class="profile-photo rounded-circle mt-3 mx-auto">
+      class="profile-photo rounded-circle mt-3 mx-auto"  width="200px" height="200px">
     <h3 class="text-center test">Score: {{matches.[0].score}}</h3>
     <h3 class="text-center test">Matched artists:</h3>
     {{#each matches.[0].matchingArtists}}
@@ -26,9 +26,9 @@
   </div>
 
   <div class='col-md-3 col-sm-7 col-10 d-flex flex-column m-3'>
-    <h2 class="text-center">{{top3matchedUsers.[1].username}}</h2>
+    <h2 class="text-center username-h2">{{top3matchedUsers.[1].username}}</h2>
     <img src={{top3matchedUsers.[1].photoUrl}} alt="match-profile-picture"
-      class="profile-photo rounded-circle mt-3 mx-auto">
+      class="profile-photo rounded-circle mt-3 mx-auto"  width="200px" height="200px">
     <h3 class="text-center test">Score: {{matches.[1].score}}</h3>
     <h3 class="text-center test">Matched artists:</h3>
     {{#each matches.[1].matchingArtists}}
@@ -47,9 +47,9 @@
   </div>
 
   <div class='col-md-3 col-sm-7 col-10 d-flex flex-column m-3'>
-    <h2 class="text-center">{{top3matchedUsers.[2].username}}</h2>
+    <h2 class="text-center username-h2">{{top3matchedUsers.[2].username}}</h2>
     <img src={{top3matchedUsers.[2].photoUrl}} alt="match-profile-picture"
-      class="profile-photo rounded-circle mt-3 mx-auto">
+      class="profile-photo rounded-circle mt-3 mx-auto" width="200px" height="200px">
     <h3 class="text-center test">Score: {{matches.[2].score}}</h3>
     <h3 class="text-center test">Matched artists:</h3>
     {{#each matches.[2].matchingArtists}}
