@@ -5,9 +5,9 @@
 {{else}}
 <p class="text-center font-weight-bold">Welcome back, {{user.username}}</p>
 {{/if}}
-{{!-- using class card for border of cards --}}
-<div class="row w-100 mx-auto justify-content-center testa">
-  <div class="top-artists col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center">
+{{!-- using class card for transparent background of cards --}}
+<div class="row w-100 mx-auto justify-content-center testa ">
+  <div class="card top-artists col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
     <ul class="mx-auto m-2">
       <li class="top-p"><b>Top ten artists:</b></li><br>
       {{#each topTenArtists}}
@@ -15,7 +15,7 @@
       {{/each}}
     </ul>
   </div>
-  <div class="profile-page col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center">
+  <div class="card profile-page col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
     <img src="{{user.photoUrl}}" alt="user-profile-picture" class="profile-photo rounded-circle mt-3 mx-auto">
     <ul class="mx-auto m-2">
       <li>{{user.username}}</li>
@@ -29,7 +29,7 @@
     <br>
     <a href="/results" class="btn btn-primary m-3 mx-auto button1">Find your matches!</a>
   </div>
-  <div class="top-genres col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center">
+  <div class="card top-genres col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
     <ul class="mx-auto m-2">
       <li class="top-p"><b>Top ten genres:</b></li><br>
       {{#each topTenGen}}

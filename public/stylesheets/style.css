@@ -7217,4 +7217,8 @@ a {
     background: #535353;
     color: #1db954; }
 
+.card {
+  background-color: rgba(185, 185, 185, 0.4);
+  border-radius: 30px; }
+
 /*# sourceMappingURL=style.css.map */
