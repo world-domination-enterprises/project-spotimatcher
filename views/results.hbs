@@ -1,10 +1,10 @@
 <h1 class="text-center">These are your matches:</h1>
 
-{{!-- {{#each top3matchedUsers}} --}}
+
 {{!-- Three cards with info of the matches --}}
 <div class="row w-100 mx-auto justify-content-center">
 
-  <div class='col-md-3 col-sm-7 col-10 d-flex flex-column m-3'>
+  <div class='card col-md-3 col-sm-7 col-10 d-flex flex-column m-3 p-3'>
     <h2 class="text-center">{{top3matchedUsers.[0].username}}</h2>
     <img src={{top3matchedUsers.[0].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto">
@@ -14,21 +14,26 @@
     <p>No matching artists.</p>
     {{/unless}}
     {{#each matches.[0].matchingArtists}}
-      <ul>
-        <li>{{this}}</li>
-      </ul>
+    <ul>
+      <li>{{this}}</li>
+    </ul>
     {{/each}}
     <br>  
     <h3 class="text-center test"><strong>{{matches.[0].matchingGenres.length}}</strong> Matching genres:</h3>
     {{#each matches.[0].matchingGenres}}
-      <ul>
-        <li>{{this}}</li>
-      </ul>
+    <ul>
+      <li>{{this}}</li>
+    </ul>
     {{/each}}
-    <button class="btn btn-primary m-3 mx-auto"><a href="/profile/{{top3matchedUsers.[0]._id}}" target="_blank">Go to user's profile</a></button>
+    <a class="btn btn-primary m-3 mx-auto" role="button" href="/profile/{{top3matchedUsers.[0]._id}}" target="_blank">Go
+      to
+      user's profile</a>
+
+    {{!-- <button class="btn btn-primary m-3 mx-auto"><a href="/profile/{{top3matchedUsers.[0]._id" target="_blank">Go to
+      user's profile</a></button> --}}
   </div>
 
-  <div class='col-md-3 col-sm-7 col-10 d-flex flex-column m-3'>
+  <div class='card col-md-3 col-sm-7 col-10 d-flex flex-column m-3 p-3'>
     <h2 class="text-center">{{top3matchedUsers.[1].username}}</h2>
     <img src={{top3matchedUsers.[1].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto">
@@ -38,21 +43,23 @@
     <p>No matching artists.</p>
     {{/unless}}
     {{#each matches.[1].matchingArtists}}
-      <ul>
-        <li>{{this}}</li>
-      </ul>
+    <ul>
+      <li>{{this}}</li>
+    </ul>
     {{/each}}
     <br>  
     <h3 class="text-center test"><strong>{{matches.[1].matchingGenres.length}}</strong> Matching genres:</h3>
     {{#each matches.[1].matchingGenres}}
-      <ul>
-        <li>{{this}}</li>
-      </ul>
+    <ul>
+      <li>{{this}}</li>
+    </ul>
     {{/each}}
-    <button class="btn btn-primary m-3 mx-auto"><a href="/profile/{{top3matchedUsers.[1]._id}}" target="_blank">Go to user's profile</a></button>
+    <a class="btn btn-primary m-3 mx-auto" role="button" href="/profile/{{top3matchedUsers.[1]._id}}" target="_blank">Go
+      to
+      user's profile</a>
   </div>
 
-  <div class='col-md-3 col-sm-7 col-10 d-flex flex-column m-3'>
+  <div class='card col-md-3 col-sm-7 col-10 d-flex flex-column m-3 p-3'>
     <h2 class="text-center">{{top3matchedUsers.[2].username}}</h2>
     <img src={{top3matchedUsers.[2].photoUrl}} alt="match-profile-picture"
       class="profile-photo rounded-circle mt-3 mx-auto">
@@ -62,18 +69,20 @@
     <p>No matching artists.</p>
     {{/unless}}
     {{#each matches.[2].matchingArtists}}
-      <ul>
-        <li>{{this}}</li>
-      </ul>
+    <ul>
+      <li>{{this}}</li>
+    </ul>
     {{/each}}
     <br>  
     <h3 class="text-center test"><strong>{{matches.[2].matchingGenres.length}}</strong> Matching genres:</h3>
     {{#each matches.[2].matchingGenres}}
-      <ul>
-        <li>{{this}}</li>
-      </ul>
+    <ul>
+      <li>{{this}}</li>
+    </ul>
     {{/each}}
-    <button class="btn btn-primary m-3 mx-auto"><a href="/profile/{{top3matchedUsers.[2]._id}}" target="_blank">Go to user's profile</a></button>
+    <a class="btn btn-primary m-3 mx-auto" role="button" href="/profile/{{top3matchedUsers.[2]._id}}" target="_blank">Go
+      to
+      user's profile</a>
   </div>
 
 </div>
