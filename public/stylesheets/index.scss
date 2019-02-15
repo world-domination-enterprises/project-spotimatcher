@@ -2,7 +2,9 @@
   height: 90%;
 }
 .main-h1 span {
+  color: #fff;
   display: inline-block;
+  font-family: "Quicksand", sans-serif;
   font-size: 58px;
   transform: scale(4);
   opacity: 0;
@@ -33,3 +35,6 @@ li a {
 }
 
 //
+navbar-brand {
+  font-size: 50px;
+}

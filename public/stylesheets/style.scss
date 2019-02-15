@@ -4,6 +4,7 @@ $primary: #1db954;
 @import "index";
 @import "profile";
 @import "animations";
+@import "about";
 @import "results";
 
 html {
@@ -16,7 +17,7 @@ body {
   height: 100%;
 }
 a {
-  color: #fff
+  color: #fff;
 }
 a:hover {
   color: #fff;
