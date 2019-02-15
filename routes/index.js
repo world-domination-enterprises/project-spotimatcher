@@ -14,7 +14,7 @@ router.get("/about", (req, res, next) => {
   res.render("about");
 });
 
-//ROUTE going to our PROFILE
+//ROUTE going to logged in user's PROFILE
 router.get("/profile", isConnected, (req, res, next) => {
   const user = req.user;
 
@@ -47,6 +47,7 @@ router.get("/profile", isConnected, (req, res, next) => {
   const countryLowercase = countrynames.getName(user.country).toLowerCase();
   const userCountry =
     countryLowercase.charAt(0).toUpperCase() + countryLowercase.slice(1);
+
   res.render("profile", {
     user,
     // converts countrycode to full country name
@@ -56,15 +57,8 @@ router.get("/profile", isConnected, (req, res, next) => {
   });
 });
 
-//ROUTE going to our RESULTS-Page
-//TODO: implement matching-function here
-//  match favArtist and favGenre arrays against eachother by using the following function:
-// function matches(arr){
-//   var counts = {};
-//   arr.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
-//   let matchedKeys = Object.keys(counts).filter(key => counts[key] > 1)
-//   return matchedKeys
-//   }
+//ROUTE going to logged in user's RESULTS-Page
+
 router.get("/results", isConnected, (req, res, next) => {
   User.find()
     .then(users => {
@@ -111,43 +105,49 @@ router.get("/results", isConnected, (req, res, next) => {
     });
 });
 
-//ROUTE for a users PROFILE-page
+//ROUTE for another user's PROFILE-page
 router.get("/profile/:id", isConnected, (req, res, next) => {
   const id = req.params.id;
+
   User.findById(id)
     .then(user => {
-      //  sort the user's favGenres by frequency (high to low)
+
       let counts = {};
-      let genresToSort = user.favGenres;
-      genresToSort.forEach(x => {
-        counts[x] = (counts[x] || 0) + 1;
-      });
-      let genresSorted = Object.keys(counts).sort((a, b) => {
-        return counts[b] - counts[a];
-      });
 
-      //  create users Top Ten Artists/Genres
-      const topTenArtists = [];
-      const topTenGenres = [];
-      for (let i = 0; i <= 10; i++) {
-        topTenArtists.push(user.favArtists[i]);
-        topTenGenres.push(genresSorted[i]);
-      }
+    let genresToSort = user.favGenres;
+    genresToSort.forEach(genre => {
+      counts[genre] = (counts[genre] || 0) + 1;
+    });
 
-      // display top 10 genres with uppercase first letter
-      const topTenGen = topTenGenres.map(item => {
-        return item.charAt(0).toUpperCase() + item.slice(1);
-      });
-      const countryLowercase = countrynames.getName(user.country).toLowerCase();
-      const userCountry =
-        countryLowercase.charAt(0).toUpperCase() + countryLowercase.slice(1);
-      res.render("profile", {
-        user,
-        // converts countrycode to full country name
-        countryName: userCountry,
-        topTenArtists,
-        topTenGen
-      });
+    // In the end, we could have: genresSorted = ['electro','pop','rap']
+    let genresSorted = Object.keys(counts).sort((a, b) => {
+      return counts[b] - counts[a];
+    });
+
+    //  create users' Top Ten Artists/Genres
+    const topTenArtists = [];
+    const topTenGenres = [];
+    for (let i = 0; i < Math.min(11, genresSorted.length); i++) {
+      topTenArtists.push(user.favArtists[i]);
+      topTenGenres.push(genresSorted[i]);
+    }
+
+    // display top 10 artists and top 10 genres
+    const topTenGen = topTenGenres.map(item => {
+      return item.charAt(0).toUpperCase() + item.slice(1);
+    });
+    const countryLowercase = countrynames.getName(user.country).toLowerCase();
+    const userCountry =
+      countryLowercase.charAt(0).toUpperCase() + countryLowercase.slice(1);
+
+      
+    res.render("otherProfile", {
+      user,
+      // converts countrycode to full country name
+      countryName: userCountry,
+      topTenArtists,
+      topTenGen
+    });
 
       // const userCountry = user.country
 

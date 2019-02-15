@@ -1,0 +1,32 @@
+<h1 class="text-center mt-3">Profile of {{user.username}}</h1>
+{{!-- use user for user data --}}
+
+{{!-- using class card for transparent background of cards --}}
+<div class="row w-100 mx-auto justify-content-center testa ">
+  <div class="card top-artists col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
+    <ul class="mx-auto m-2">
+      <li class="top-p"><b>Top ten artists:</b></li><br>
+      {{#each topTenArtists}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="card profile-page col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
+    <img src="{{user.photoUrl}}" alt="user-profile-picture" class="profile-photo rounded-circle mt-3 mx-auto">
+    <ul class="mx-auto m-2">
+      <li>{{user.username}}</li>
+      <li>{{countryName}}</li>
+      <li><a class="btn btn-primary m-3 mx-auto" role="button" href="mailto:{{user.email}}" target="_blank">Contact {{user.username}}</a></li>
+    </ul>
+    <a href={{user.profileUrl}} target="_blank" class="mx-auto">Go to {{user.username}}'s Spotify profile</a>
+    <br>
+  </div>
+  <div class="card top-genres col-md-3 col-sm-7 col-10 d-flex flex-column align-self-center m-3 p-3">
+    <ul class="mx-auto m-2">
+      <li class="top-p"><b>Top ten genres:</b></li><br>
+      {{#each topTenGen}}
+      <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

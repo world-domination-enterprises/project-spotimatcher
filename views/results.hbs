@@ -1,6 +1,5 @@
 <h1 class="text-center mt-3">These are your matches:</h1>
 
-
 {{!-- Three cards with info of the matches --}}
 <div class="row w-100 mx-auto justify-content-center">
 
@@ -11,7 +10,7 @@
     <h3 class="text-center m-3">Score: {{matches.[0].score}}</h3>
     <h3 class="text-center h3-matching-art"><strong>{{matches.[0].matchingArtists.length}}</strong> Matching artists:</h3>
     {{#unless matches.[0].matchingArtists}}
-    <p class="text-center">❌No matching artists.</p>
+    <p class="no-match text-center p-0 m-0">❌No matching artists</p>
     {{/unless}}
     {{#each matches.[0].matchingArtists}}
     <ul>
@@ -30,8 +29,7 @@
     </ul>
     {{/each}}
     <a class="btn btn-primary m-3 mx-auto" role="button" href="/profile/{{top3matchedUsers.[0]._id}}" target="_blank">Go
-      to
-      user's profile</a>
+      to {{top3matchedUsers.[0].username}}'s profile</a>
 
     {{!-- <button class="btn btn-primary m-3 mx-auto"><a href="/profile/{{top3matchedUsers.[0]._id" target="_blank">Go to
       user's profile</a></button> --}}
@@ -44,7 +42,7 @@
      <h3 class="text-center h3-score m-3">Score: {{matches.[1].score}}</h3>
     <h3 class="text-center h3-matching-art"><strong>{{matches.[1].matchingArtists.length}}</strong> Matching artists:</h3>
     {{#unless matches.[1].matchingArtists}}
-      <p class="text-center">❌No matching artists.</p>
+      <p class="no-match text-center p-0 m-0">❌No matching artists</p>
     {{/unless}}
    {{#each matches.[1].matchingArtists}}
     <ul>
@@ -62,9 +60,7 @@
       <li>{{this}}</li>
     </ul>
     {{/each}}
-    <a class="btn btn-primary m-3 mx-auto" role="button" href="/profile/{{top3matchedUsers.[1]._id}}" target="_blank">Go
-      to
-      user's profile</a>
+    <a class="btn btn-primary m-3 mx-auto" role="button" href="/profile/{{top3matchedUsers.[1]._id}}" target="_blank">Go to {{top3matchedUsers.[1].username}}'s profile</a>
   </div>
 
   <div class='card col-md-3 col-sm-8 col-11 d-flex flex-column m-3 p-3 third'>
@@ -74,7 +70,7 @@
      <h3 class="text-center h3-score m-3">Score: {{matches.[2].score}}</h3>
     <h3 class="text-center h3-matching-art"><strong>{{matches.[2].matchingArtists.length}}</strong> Matching artists:</h3>
     {{#unless matches.[2].matchingArtists}}
-      <p class="text-center">❌No matching artists.</p>
+      <p class="no-match text-center p-0 m-0">❌No matching artists</p>
     {{/unless}}
     {{#each matches.[2].matchingArtists}}
     <ul>
@@ -93,10 +89,7 @@
       <li>{{this}}</li>
     </ul>
     {{/each}}
-
     <a class="btn btn-primary m-3 mx-auto" role="button" href="/profile/{{top3matchedUsers.[2]._id}}" target="_blank">Go
-      to
-      user's profile</a>
+      to {{top3matchedUsers.[2].username}}'s profile</a>
   </div>
-
 </div>

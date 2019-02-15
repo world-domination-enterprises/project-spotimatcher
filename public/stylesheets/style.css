@@ -7284,7 +7284,7 @@ hr {
   #headerwrap h3 {
     font-size: 20px; } }
 
-.h3-matching-gen, .h3-matching-art, .top-p {
+.h3-matching-gen, .h3-matching-art, .top-p, .no-match {
   font-size: 20px; }
 
 html {
