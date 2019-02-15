@@ -95,8 +95,10 @@ router.get(
 //TODO: find a way to log user out with spotify
 
 router.get('/logout', function(req, res){
+  console.log('user: ', req.user)
+  // User.findByIdAndUpdate(req.user._id, { $set: { refreshToken: 'null' } }, {new: true} )
   req.session.destroy(function (err) {
-  res.redirect('/'); //Inside a callback… bulletproof!
+  res.redirect('/'); 
   });
   });
 
