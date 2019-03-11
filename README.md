@@ -1,7 +1,3 @@
 # Spotimatcher
 
-## TODO
-- Write a README file (with screenshots and instructions to recreate the project)
-- Protect the routes
-- Try to login with a lot of different accounts with the deployed version and see if it's working
-- Do the general layout and create a navbar (and different content displayed if loggedin or not)
+Spotimatcher is a matching app connecting Spotify users based on their musical tastes. Users log in using their Spotify credentials and will be paired up with the three users having the highest overlap in terms of preferred artists and genres.
